@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Nomuman</title>
-  <meta name="description" content="Portfolio, blog, art, and books." />
+  <meta name="description" content="ポートフォリオ、ブログ、アート、読書ログ。" />
 
   <link rel="alternate" hreflang="en" href="https://<username>.github.io/" />
   <link rel="alternate" hreflang="ja" href="https://<username>.github.io/ja/" />
@@ -14,23 +14,23 @@
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="/" aria-label="Home">N</a>
+    <a class="brand" href="/ja/" aria-label="Home">N</a>
     <nav class="nav">
-      <a href="/work/">Work</a>
-      <a href="/blog/">Blog</a>
-      <a href="/art/">Art</a>
-      <a href="/books/">Books</a>
-      <a href="/about/">About</a>
-      <a class="cta" href="mailto:you@example.com">Get in touch</a>
-      <a data-lang-toggle href="/ja/">JA</a>
+      <a href="/ja/work/">Work</a>
+      <a href="/ja/blog/">Blog</a>
+      <a href="/ja/art/">Art</a>
+      <a href="/ja/books/">Books</a>
+      <a href="/ja/about/">About</a>
+      <a class="cta" href="mailto:you@example.com">連絡する</a>
+      <a data-lang-toggle href="/">EN</a>
     </nav>
   </header>
 
   <main class="wrap">
     <section class="hero">
-      <p class="kicker">Hi there!</p>
-      <h1>I’m Nomuman.</h1>
-      <p class="lead">Product engineer in Japan. I build lightweight products and care about long-term craft.</p>
+      <p class="kicker">やあ！</p>
+      <h1>Nomumanです。</h1>
+      <p class="lead">日本でプロダクトを作っています。軽量で長く育つプロダクトが好き。</p>
 
       <div class="links">
         <a href="mailto:you@example.com">Email</a>
@@ -41,7 +41,7 @@
 
     <section class="card" id="about">
       <h2>About</h2>
-      <p class="muted">I design and ship software with a focus on clarity, speed, and maintainability. My work spans mobile, web, and product design.</p>
+      <p class="muted">設計から実装まで、分かりやすさと軽さを大切にして作っています。モバイルとWebを横断するのが得意です。</p>
     </section>
 
     <section class="card" id="journey">
@@ -50,17 +50,17 @@
         <li class="item">
           <div class="role">Senior Engineer @ Studio Nova</div>
           <div class="meta">2023 — Now · Tokyo</div>
-          <div>Leading mobile and web initiatives with a small cross-functional team.</div>
+          <div>小さなチームでモバイル/ウェブのプロダクトをリード。</div>
         </li>
         <li class="item">
           <div class="role">Product Engineer @ Lumen</div>
           <div class="meta">2020 — 2023 · Remote</div>
-          <div>Built user-facing features and internal tools for a global SaaS platform.</div>
+          <div>グローバルSaaSの機能開発と内部ツールを担当。</div>
         </li>
         <li class="item">
           <div class="role">Frontend Engineer @ Kodo</div>
           <div class="meta">2018 — 2020 · Osaka</div>
-          <div>Focused on performance and design systems for consumer web apps.</div>
+          <div>パフォーマンスとデザインシステムに注力。</div>
         </li>
       </ul>
     </section>
@@ -96,44 +96,44 @@
     </section>
 
     <section class="card" id="highlights">
-      <h2>Highlights</h2>
-      <p class="muted">Latest items fetched from Supabase.</p>
+      <h2>最新の更新</h2>
+      <p class="muted">Supabaseから最新データを取得します。</p>
       <div class="grid2">
         <article class="mini-card">
           <div class="mini-head">
             <h3>Work</h3>
-            <a class="mini-link" href="/work/">All work →</a>
+            <a class="mini-link" href="/ja/work/">一覧 →</a>
           </div>
           <ul id="list-work" class="list"></ul>
         </article>
         <article class="mini-card">
           <div class="mini-head">
             <h3>Blog</h3>
-            <a class="mini-link" href="/blog/">All posts →</a>
+            <a class="mini-link" href="/ja/blog/">一覧 →</a>
           </div>
           <ul id="list-blog" class="list"></ul>
         </article>
         <article class="mini-card">
           <div class="mini-head">
             <h3>Art</h3>
-            <a class="mini-link" href="/art/">All art →</a>
+            <a class="mini-link" href="/ja/art/">一覧 →</a>
           </div>
           <ul id="list-art" class="list"></ul>
         </article>
         <article class="mini-card">
           <div class="mini-head">
             <h3>Books</h3>
-            <a class="mini-link" href="/books/">All books →</a>
+            <a class="mini-link" href="/ja/books/">一覧 →</a>
           </div>
           <ul id="list-books" class="list"></ul>
         </article>
       </div>
-      <p id="highlight-status" class="muted">Loading…</p>
+      <p id="highlight-status" class="muted">読み込み中…</p>
     </section>
 
     <section class="card" id="contact">
-      <h2>Get in touch</h2>
-      <p class="muted">Want to collaborate or chat? Reach out anytime.</p>
+      <h2>Contact</h2>
+      <p class="muted">仕事の相談や軽い雑談でも歓迎です。</p>
       <div class="links">
         <a href="mailto:you@example.com">you@example.com</a>
         <a href="https://x.com/your_x" target="_blank" rel="noreferrer">X</a>
@@ -211,7 +211,7 @@
         listWork.replaceChildren(...workItems.map(item => listItem({
           title: item.title,
           meta: item.summary || item.year?.toString(),
-          url: `/work/item/?slug=${encodeURIComponent(item.slug)}`,
+          url: `/ja/work/item/?slug=${encodeURIComponent(item.slug)}`,
           tags: item.stack,
           label: t.read,
         })));
@@ -223,7 +223,7 @@
         listBlog.replaceChildren(...blogItems.map(item => listItem({
           title: item.title,
           meta: formatDate(item.published_at),
-          url: `/blog/post/?slug=${encodeURIComponent(item.slug)}`,
+          url: `/ja/blog/post/?slug=${encodeURIComponent(item.slug)}`,
           tags: item.tags,
           label: t.read,
         })));
@@ -235,7 +235,7 @@
         listArt.replaceChildren(...artItems.map(item => listItem({
           title: item.title,
           meta: item.medium || (item.year ? String(item.year) : ""),
-          url: `/art/item/?slug=${encodeURIComponent(item.slug)}`,
+          url: `/ja/art/item/?slug=${encodeURIComponent(item.slug)}`,
           tags: item.tags,
           label: t.view,
         })));
@@ -247,7 +247,7 @@
         listBooks.replaceChildren(...bookItems.map(item => listItem({
           title: item.title,
           meta: [item.author, formatDate(item.finished_at)].filter(Boolean).join(" · "),
-          url: `/books/`,
+          url: `/ja/books/`,
           tags: item.tags,
           label: t.more,
         })));
