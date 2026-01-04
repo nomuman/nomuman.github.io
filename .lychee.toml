@@ -1,0 +1,12 @@
+# Link checker configuration
+# https://github.com/lycheeverse/lychee
+
+exclude = [
+  "^mailto:",
+  "https://example.com",
+  "https://x.com/nomuman_",
+  "https://github.com/nomuman"
+]
+
+# Some sites may block bots; accept 403/429 to avoid false negatives.
+accept = [200, 206, 403, 429]
