@@ -346,7 +346,7 @@ h1{ margin:0 0 12px; font-size:clamp(36px, 5vw, 64px); line-height:1.05; }
       <a href="/art/">Art</a>
       <a href="/books/">Books</a>
       <a href="/about/">About</a>
-      <a class="cta" href="mailto:you@example.com">Get in touch</a>
+      <a class="cta" href="mailto:senri.gotoda@gmail.com">Get in touch</a>
       <a data-lang-toggle href="/ja/">JA</a>
     </nav>
   </header>
@@ -358,7 +358,7 @@ h1{ margin:0 0 12px; font-size:clamp(36px, 5vw, 64px); line-height:1.05; }
       <p class="lead">Software Engineer in Japan. I build mobile products and love lightweight craft.</p>
 
       <div class="links">
-        <a href="mailto:you@example.com">Email</a>
+        <a href="mailto:senri.gotoda@gmail.com">Email</a>
         <a href="https://x.com/nomuman_" target="_blank" rel="noreferrer">X</a>
         <a href="https://github.com/nomuman" target="_blank" rel="noreferrer">GitHub</a>
       </div>
@@ -426,7 +426,7 @@ h1{ margin:0 0 12px; font-size:clamp(36px, 5vw, 64px); line-height:1.05; }
       <a href="/ja/art/">Art</a>
       <a href="/ja/books/">Books</a>
       <a href="/ja/about/">About</a>
-      <a class="cta" href="mailto:you@example.com">連絡する</a>
+      <a class="cta" href="mailto:senri.gotoda@gmail.com">連絡する</a>
       <a data-lang-toggle href="/">EN</a>
     </nav>
   </header>
@@ -438,7 +438,7 @@ h1{ margin:0 0 12px; font-size:clamp(36px, 5vw, 64px); line-height:1.05; }
       <p class="lead">日本でソフトウェアを作ってる。軽量で長く育つプロダクトが好き。</p>
 
       <div class="links">
-        <a href="mailto:you@example.com">Email</a>
+        <a href="mailto:senri.gotoda@gmail.com">Email</a>
         <a href="https://x.com/nomuman_" target="_blank" rel="noreferrer">X</a>
         <a href="https://github.com/nomuman" target="_blank" rel="noreferrer">GitHub</a>
       </div>
