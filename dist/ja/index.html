@@ -26,14 +26,14 @@
 <body>
   <header class="topbar">
     <a class="brand" href="/ja/" aria-label="Home">N</a>
-    <nav class="nav">
+    <nav class="nav nav--main" aria-label="Primary">
   <a href="/ja/work/">Work</a>
   <a href="/ja/blog/">Blog</a>
   <a href="/ja/art/">Art</a>
   <a href="/ja/books/">Books</a>
   <a href="/ja/about/">About</a>
   <a class="cta" href="mailto:you@example.com">連絡する</a>
-  <a data-lang-toggle href="/">EN</a>
+  <a class="lang-toggle" data-lang-toggle href="/">EN</a>
 </nav>
 
   </header>
@@ -42,7 +42,16 @@
     <section class="hero">
       <p class="kicker">やあ！</p>
       <h1>Nomumanです。</h1>
-      <p class="lead">日本でプロダクトを作っています。軽量で長く育つプロダクトが好き。</p>
+      <p class="lead">日本でプロダクトを作っています。軽量で長く育つものが好きで、幾何学・動物・本が生活の芯。</p>
+      <p class="motto">真言密教の静けさ × お笑いの間 × いつも赤。</p>
+      <div class="chips chips--lite interest-chips">
+        <span data-accent="true">真言密教</span>
+        <span>お笑い</span>
+        <span>イラスト</span>
+        <span>動物園</span>
+        <span>読書</span>
+        <span data-accent="true">赤</span>
+      </div>
 
       <div class="links">
         <a href="mailto:you@example.com">Email</a>
@@ -51,12 +60,12 @@
       </div>
     </section>
 
-    <section class="card" id="about">
+    <section class="card" id="about" data-stamp="About">
       <h2>About</h2>
       <p class="muted">設計から実装まで、分かりやすさと軽さを大切にして作っています。モバイルとWebを横断するのが得意です。</p>
     </section>
 
-    <section class="card" id="journey">
+    <section class="card" id="journey" data-stamp="Journey">
       <h2>Journey</h2>
       <ul class="list timeline">
         <li class="item">
@@ -77,7 +86,7 @@
       </ul>
     </section>
 
-    <section class="card" id="skills">
+    <section class="card" id="skills" data-stamp="Skills">
       <h2>Skills</h2>
       <div class="grid2">
         <div class="skill-group">
@@ -107,7 +116,7 @@
       </div>
     </section>
 
-    <section class="card" id="highlights">
+    <section class="card" id="highlights" data-stamp="最新の更新">
       <h2>最新の更新</h2>
       <p class="muted">Supabaseから最新データを取得します。</p>
       <div class="grid2">
@@ -143,7 +152,7 @@
       <p id="highlight-status" class="muted">読み込み中…</p>
     </section>
 
-    <section class="card" id="contact">
+    <section class="card" id="contact" data-stamp="Contact">
       <h2>Contact</h2>
       <p class="muted">仕事の相談や軽い雑談でも歓迎です。</p>
       <div class="links">

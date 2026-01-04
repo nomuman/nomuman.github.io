@@ -26,18 +26,26 @@
 <body>
   <header class="topbar">
     <a class="brand" href="/" aria-label="Home">N</a>
-    <nav class="nav">
+    <nav class="nav nav--back" aria-label="Back">
   <a href="/blog/">Back</a>
-  <a data-lang-toggle href="/ja/blog/post/">JA</a>
+  <a class="lang-toggle" data-lang-toggle href="/ja/blog/post/">JA</a>
 </nav>
 
   </header>
 
   <main class="wrap">
-    <article class="card">
+    <article class="card" data-stamp="Writing">
       <h1 id="title">Loading…</h1>
       <p id="date" class="meta"></p>
       <p id="summary" class="muted"></p>
+      <div class="chips chips--micro interest-chips">
+        <span data-accent="true">Shingon</span>
+        <span>Comedy</span>
+        <span>Illustration</span>
+        <span>Zoo</span>
+        <span>Books</span>
+        <span data-accent="true">Red</span>
+      </div>
       <div id="tags" class="chips"></div>
       <hr class="divider" />
       <div id="body"></div>

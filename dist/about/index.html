@@ -25,14 +25,14 @@
 <body>
   <header class="topbar">
     <a class="brand" href="/" aria-label="Home">N</a>
-    <nav class="nav">
+    <nav class="nav nav--main" aria-label="Primary">
   <a href="/work/">Work</a>
   <a href="/blog/">Blog</a>
   <a href="/art/">Art</a>
   <a href="/books/">Books</a>
   <a href="/about/">About</a>
   <a class="cta" href="mailto:you@example.com">Get in touch</a>
-  <a data-lang-toggle href="/ja/about/">JA</a>
+  <a class="lang-toggle" data-lang-toggle href="/ja/about/">JA</a>
 </nav>
 
   </header>
@@ -42,6 +42,15 @@
       <p class="kicker">Hello</p>
       <h1>About Nomuman</h1>
       <p class="lead">Product engineer building calm, efficient tools. I care about readability, speed, and consistency.</p>
+      <p class="motto">Zoo walks, book notes, and red outfits keep the rhythm.</p>
+      <div class="chips chips--lite interest-chips">
+        <span data-accent="true">Shingon</span>
+        <span>Comedy</span>
+        <span>Illustration</span>
+        <span>Zoo</span>
+        <span>Books</span>
+        <span data-accent="true">Red</span>
+      </div>
       <div class="links">
         <a href="mailto:you@example.com">you@example.com</a>
         <a href="https://x.com/your_x" target="_blank" rel="noreferrer">X</a>
@@ -49,7 +58,7 @@
       </div>
     </section>
 
-    <section class="card">
+    <section class="card" data-stamp="Journey">
       <h2>Journey</h2>
       <ul class="list timeline">
         <li class="item">
@@ -70,7 +79,7 @@
       </ul>
     </section>
 
-    <section class="card">
+    <section class="card" data-stamp="Skills">
       <h2>Skills</h2>
       <div class="grid2">
         <div class="skill-group">
@@ -88,7 +97,7 @@
       </div>
     </section>
 
-    <section class="card">
+    <section class="card" data-stamp="Contact">
       <h2>Contact</h2>
       <p class="muted">Open to collaboration and friendly chats.</p>
       <div class="links">

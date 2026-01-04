@@ -26,14 +26,14 @@
 <body>
   <header class="topbar">
     <a class="brand" href="/" aria-label="Home">N</a>
-    <nav class="nav">
+    <nav class="nav nav--main" aria-label="Primary">
   <a href="/work/">Work</a>
   <a href="/blog/">Blog</a>
   <a href="/art/">Art</a>
   <a href="/books/">Books</a>
   <a href="/about/">About</a>
   <a class="cta" href="mailto:you@example.com">Get in touch</a>
-  <a data-lang-toggle href="/ja/">JA</a>
+  <a class="lang-toggle" data-lang-toggle href="/ja/">JA</a>
 </nav>
 
   </header>
@@ -42,7 +42,16 @@
     <section class="hero">
       <p class="kicker">Hi there!</p>
       <h1>I’m Nomuman.</h1>
-      <p class="lead">Product engineer in Japan. I build lightweight products and care about long-term craft.</p>
+      <p class="lead">Product engineer in Japan. I build lightweight tools and love geometry, animals, and books.</p>
+      <p class="motto">Shingon calm, comedy timing, red every day.</p>
+      <div class="chips chips--lite interest-chips">
+        <span data-accent="true">Shingon</span>
+        <span>Comedy</span>
+        <span>Illustration</span>
+        <span>Zoo</span>
+        <span>Books</span>
+        <span data-accent="true">Red</span>
+      </div>
 
       <div class="links">
         <a href="mailto:you@example.com">Email</a>
@@ -51,12 +60,12 @@
       </div>
     </section>
 
-    <section class="card" id="about">
+    <section class="card" id="about" data-stamp="About">
       <h2>About</h2>
       <p class="muted">I design and ship software with a focus on clarity, speed, and maintainability. My work spans mobile, web, and product design.</p>
     </section>
 
-    <section class="card" id="journey">
+    <section class="card" id="journey" data-stamp="Journey">
       <h2>Journey</h2>
       <ul class="list timeline">
         <li class="item">
@@ -77,7 +86,7 @@
       </ul>
     </section>
 
-    <section class="card" id="skills">
+    <section class="card" id="skills" data-stamp="Skills">
       <h2>Skills</h2>
       <div class="grid2">
         <div class="skill-group">
@@ -107,7 +116,7 @@
       </div>
     </section>
 
-    <section class="card" id="highlights">
+    <section class="card" id="highlights" data-stamp="Highlights">
       <h2>Highlights</h2>
       <p class="muted">Latest items fetched from Supabase.</p>
       <div class="grid2">
@@ -143,7 +152,7 @@
       <p id="highlight-status" class="muted">Loading…</p>
     </section>
 
-    <section class="card" id="contact">
+    <section class="card" id="contact" data-stamp="Get in touch">
       <h2>Get in touch</h2>
       <p class="muted">Want to collaborate or chat? Reach out anytime.</p>
       <div class="links">

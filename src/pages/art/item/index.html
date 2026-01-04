@@ -30,9 +30,17 @@
   </header>
 
   <main class="wrap">
-    <article class="card">
+    <article class="card" data-stamp="{{t:art.title}}">
       <h1 id="title">{{t:common.loading}}</h1>
       <p id="meta" class="meta"></p>
+      <div class="chips chips--micro interest-chips">
+        <span data-accent="true">{{t:theme.chips.0}}</span>
+        <span>{{t:theme.chips.1}}</span>
+        <span>{{t:theme.chips.2}}</span>
+        <span>{{t:theme.chips.3}}</span>
+        <span>{{t:theme.chips.4}}</span>
+        <span data-accent="true">{{t:theme.chips.5}}</span>
+      </div>
       <div id="tags" class="chips"></div>
       <hr class="divider" />
       <div id="body"></div>

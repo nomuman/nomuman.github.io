@@ -25,14 +25,14 @@
 <body>
   <header class="topbar">
     <a class="brand" href="/ja/" aria-label="Home">N</a>
-    <nav class="nav">
+    <nav class="nav nav--main" aria-label="Primary">
   <a href="/ja/work/">Work</a>
   <a href="/ja/blog/">Blog</a>
   <a href="/ja/art/">Art</a>
   <a href="/ja/books/">Books</a>
   <a href="/ja/about/">About</a>
   <a class="cta" href="mailto:you@example.com">連絡する</a>
-  <a data-lang-toggle href="/about/">EN</a>
+  <a class="lang-toggle" data-lang-toggle href="/about/">EN</a>
 </nav>
 
   </header>
@@ -42,6 +42,15 @@
       <p class="kicker">こんにちは</p>
       <h1>About Nomuman</h1>
       <p class="lead">読みやすく軽い体験を作ることにこだわるプロダクトエンジニアです。</p>
+      <p class="motto">動物園と読書メモ、赤い服がルーティン。</p>
+      <div class="chips chips--lite interest-chips">
+        <span data-accent="true">真言密教</span>
+        <span>お笑い</span>
+        <span>イラスト</span>
+        <span>動物園</span>
+        <span>読書</span>
+        <span data-accent="true">赤</span>
+      </div>
       <div class="links">
         <a href="mailto:you@example.com">you@example.com</a>
         <a href="https://x.com/your_x" target="_blank" rel="noreferrer">X</a>
@@ -49,7 +58,7 @@
       </div>
     </section>
 
-    <section class="card">
+    <section class="card" data-stamp="Journey">
       <h2>Journey</h2>
       <ul class="list timeline">
         <li class="item">
@@ -70,7 +79,7 @@
       </ul>
     </section>
 
-    <section class="card">
+    <section class="card" data-stamp="Skills">
       <h2>Skills</h2>
       <div class="grid2">
         <div class="skill-group">
@@ -88,7 +97,7 @@
       </div>
     </section>
 
-    <section class="card">
+    <section class="card" data-stamp="Contact">
       <h2>Contact</h2>
       <p class="muted">お仕事の相談や雑談も歓迎です。</p>
       <div class="links">

@@ -26,17 +26,25 @@
 <body>
   <header class="topbar">
     <a class="brand" href="/" aria-label="Home">N</a>
-    <nav class="nav">
+    <nav class="nav nav--back" aria-label="Back">
   <a href="/work/">Back</a>
-  <a data-lang-toggle href="/ja/work/item/">JA</a>
+  <a class="lang-toggle" data-lang-toggle href="/ja/work/item/">JA</a>
 </nav>
 
   </header>
 
   <main class="wrap">
-    <section class="card">
+    <section class="card" data-stamp="Work">
       <h1 id="title">Loading…</h1>
       <p id="summary" class="muted"></p>
+      <div class="chips chips--micro interest-chips">
+        <span data-accent="true">Shingon</span>
+        <span>Comedy</span>
+        <span>Illustration</span>
+        <span>Zoo</span>
+        <span>Books</span>
+        <span data-accent="true">Red</span>
+      </div>
       <div id="stack" class="chips"></div>
       <div id="links" class="links"></div>
       <hr class="divider" />

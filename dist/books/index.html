@@ -26,22 +26,30 @@
 <body>
   <header class="topbar">
     <a class="brand" href="/" aria-label="Home">N</a>
-    <nav class="nav">
+    <nav class="nav nav--main" aria-label="Primary">
   <a href="/work/">Work</a>
   <a href="/blog/">Blog</a>
   <a href="/art/">Art</a>
   <a href="/books/">Books</a>
   <a href="/about/">About</a>
   <a class="cta" href="mailto:you@example.com">Get in touch</a>
-  <a data-lang-toggle href="/ja/books/">JA</a>
+  <a class="lang-toggle" data-lang-toggle href="/ja/books/">JA</a>
 </nav>
 
   </header>
 
   <main class="wrap">
-    <section class="card">
+    <section class="card" data-stamp="Books">
       <h1>Books</h1>
       <p class="muted">Short notes from recent reads.</p>
+      <div class="chips chips--lite interest-chips">
+        <span data-accent="true">Shingon</span>
+        <span>Comedy</span>
+        <span>Illustration</span>
+        <span>Zoo</span>
+        <span>Books</span>
+        <span data-accent="true">Red</span>
+      </div>
       <ul id="list" class="list"></ul>
     </section>
   </main>
