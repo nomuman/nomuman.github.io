@@ -218,15 +218,15 @@ using (published = true);
 insert into public.work_items
 (group_id, lang, slug, title, summary, year, stack, links, body_html, featured, published, published_at)
 values
-('work_kyu','en','kyu','KYU','Memory capture app + camera ecosystem',2025,
- array['Flutter','Kotlin','Firebase'],
- '[{"label":"GitHub","url":"https://github.com/your_github"},{"label":"Site","url":"https://example.com"}]'::jsonb,
- '<p>Short case study (EN).</p><ul><li>What I built</li><li>Constraints</li><li>Impact</li></ul>',
+('work_sample','en','sample-product','Sample Product','Onboarding refresh and lightweight design system',2025,
+ array['Flutter','Design System','Analytics'],
+ '[{"label":"Case Study","url":"https://example.com"}]'::jsonb,
+ '<p>Short case study (EN).</p><ul><li>Scope</li><li>Decisions</li><li>Results</li></ul>',
  true, true, now()),
-('work_kyu','ja','kyu','KYU','思い出を残すアプリ＋カメラのエコシステム',2025,
- array['Flutter','Kotlin','Firebase'],
- '[{"label":"GitHub","url":"https://github.com/your_github"},{"label":"Site","url":"https://example.com"}]'::jsonb,
- '<p>短いケーススタディ（JA）。</p><ul><li>作ったもの</li><li>制約</li><li>成果</li></ul>',
+('work_sample','ja','sample-product','Sample Product','オンボーディング改善と軽量なデザインシステム',2025,
+ array['Flutter','Design System','Analytics'],
+ '[{"label":"Case Study","url":"https://example.com"}]'::jsonb,
+ '<p>短いケーススタディ（JA）。</p><ul><li>範囲</li><li>判断</li><li>成果</li></ul>',
  true, true, now());
 
 -- BLOG
