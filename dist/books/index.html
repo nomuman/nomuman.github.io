@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Books — Nomuman</title>
+  <meta name="description" content="Reading log and short notes." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Books — Nomuman" />
+  <meta property="og:description" content="Reading log and short notes." />
+  <meta property="og:url" content="https://nomuman.github.io/books/" />
+  <meta property="og:image" content="https://nomuman.github.io/assets/ogp.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Books — Nomuman" />
+  <meta name="twitter:description" content="Reading log and short notes." />
+  <meta name="twitter:image" content="https://nomuman.github.io/assets/ogp.png" />
+
+  <link rel="alternate" hreflang="en" href="https://nomuman.github.io/books/" />
+  <link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/books/" />
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/shared/styles.css" />
+  <script src="/shared/config.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Home">N</a>
+    <nav class="nav">
+  <a href="/work/">Work</a>
+  <a href="/blog/">Blog</a>
+  <a href="/art/">Art</a>
+  <a href="/books/">Books</a>
+  <a href="/about/">About</a>
+  <a class="cta" href="mailto:you@example.com">Get in touch</a>
+  <a data-lang-toggle href="/ja/books/">JA</a>
+</nav>
+
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <h1>Books</h1>
+      <p class="muted">Short notes from recent reads.</p>
+      <ul id="list" class="list"></ul>
+    </section>
+  </main>
+
+  <script type="module">
+    import { mountLangToggle, fetchList, el, chips } from "/shared/app.js";
+    mountLangToggle();
+
+    const locale = "en" === "ja" ? "ja-JP" : "en-US";
+    const formatDate = (value) => {
+      if (!value) return "";
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return value;
+      return new Intl.DateTimeFormat(locale, { year: "numeric", month: "short" }).format(date);
+    };
+
+    const stars = (rating) => {
+      if (!rating) return "";
+      return "★".repeat(rating) + "☆".repeat(5 - rating);
+    };
+
+    const ul = document.getElementById("list");
+    const items = await fetchList("books");
+
+    ul.replaceChildren(...items.map(x => {
+      const meta = [x.author, formatDate(x.finished_at), stars(x.rating)].filter(Boolean).join(" · ");
+      return el("li", { class: "item" }, [
+        el("h3", {}, [x.title]),
+        el("p", { class: "meta" }, [meta]),
+        chips(x.tags || [])
+      ]);
+    }));
+  </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Work — Nomuman</title>
+  <meta name="description" content="制作物とプロジェクト一覧。" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Work — Nomuman" />
+  <meta property="og:description" content="制作物とプロジェクト一覧。" />
+  <meta property="og:url" content="https://nomuman.github.io/ja/work/" />
+  <meta property="og:image" content="https://nomuman.github.io/assets/ogp.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Work — Nomuman" />
+  <meta name="twitter:description" content="制作物とプロジェクト一覧。" />
+  <meta name="twitter:image" content="https://nomuman.github.io/assets/ogp.png" />
+
+  <link rel="alternate" hreflang="en" href="https://nomuman.github.io/work/" />
+  <link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/work/" />
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/shared/styles.css" />
+  <script src="/shared/config.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/ja/" aria-label="Home">N</a>
+    <nav class="nav">
+  <a href="/ja/work/">Work</a>
+  <a href="/ja/blog/">Blog</a>
+  <a href="/ja/art/">Art</a>
+  <a href="/ja/books/">Books</a>
+  <a href="/ja/about/">About</a>
+  <a class="cta" href="mailto:you@example.com">連絡する</a>
+  <a data-lang-toggle href="/work/">EN</a>
+</nav>
+
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <h1>Work</h1>
+      <p class="muted">プロダクトや制作物の一覧です。</p>
+      <ul id="list" class="list"></ul>
+    </section>
+  </main>
+
+  <script type="module">
+    import { mountLangToggle, fetchList, el, chips } from "/shared/app.js";
+    mountLangToggle();
+
+    const ul = document.getElementById("list");
+    const items = await fetchList("work");
+
+    ul.replaceChildren(...items.map(x =>
+      el("li", { class: "item" }, [
+        el("h3", {}, [x.title]),
+        el("p", { class: "muted" }, [x.summary || ""]),
+        chips(x.stack || []),
+        el("div", { class: "links" }, [
+          el("a", { href: `/ja/work/item/?slug=${encodeURIComponent(x.slug)}` }, ["読む"])
+        ])
+      ])
+    ));
+  </script>
+</body>
+</html>

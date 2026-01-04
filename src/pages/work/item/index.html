@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{{t:workItem.meta.title}}</title>
+  <meta name="description" content="{{t:workItem.meta.description}}" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{t:workItem.meta.title}}" />
+  <meta property="og:description" content="{{t:workItem.meta.description}}" />
+  <meta property="og:url" content="{{ogUrl}}" />
+  <meta property="og:image" content="{{ogImage}}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{t:workItem.meta.title}}" />
+  <meta name="twitter:description" content="{{t:workItem.meta.description}}" />
+  <meta name="twitter:image" content="{{ogImage}}" />
+
+  <link rel="alternate" hreflang="en" href="{{hrefEn}}" />
+  <link rel="alternate" hreflang="ja" href="{{hrefJa}}" />
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/shared/styles.css" />
+  <script src="/shared/config.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="{{base}}/" aria-label="Home">N</a>
+    {{nav}}
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <h1 id="title">{{t:common.loading}}</h1>
+      <p id="summary" class="muted"></p>
+      <div id="stack" class="chips"></div>
+      <div id="links" class="links"></div>
+      <hr class="divider" />
+      <div id="body"></div>
+    </section>
+  </main>
+
+  <script type="module">
+    import { mountLangToggle, qs, fetchOne, chips, linkRow } from "/shared/app.js";
+    mountLangToggle();
+
+    const copy = {
+      missingSlug: "{{t:common.missingSlug}}",
+      notFound: "{{t:common.notFound}}"
+    };
+
+    const slug = qs("slug");
+    if (!slug) {
+      document.getElementById("title").textContent = copy.missingSlug;
+      throw new Error("Missing slug");
+    }
+
+    const item = await fetchOne("work", slug);
+    if (!item) {
+      document.getElementById("title").textContent = copy.notFound;
+      throw new Error("Not found");
+    }
+
+    document.title = `${item.title} — Work`;
+    document.getElementById("title").textContent = item.title;
+    document.getElementById("summary").textContent = item.summary || "";
+    document.getElementById("stack").replaceWith(chips(item.stack || []));
+    document.getElementById("links").replaceWith(linkRow(item.links || []));
+    document.getElementById("body").innerHTML = item.body_html || "";
+  </script>
+</body>
+</html>

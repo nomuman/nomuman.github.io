@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{{t:blogPost.meta.title}}</title>
+  <meta name="description" content="{{t:blogPost.meta.description}}" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="{{t:blogPost.meta.title}}" />
+  <meta property="og:description" content="{{t:blogPost.meta.description}}" />
+  <meta property="og:url" content="{{ogUrl}}" />
+  <meta property="og:image" content="{{ogImage}}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{t:blogPost.meta.title}}" />
+  <meta name="twitter:description" content="{{t:blogPost.meta.description}}" />
+  <meta name="twitter:image" content="{{ogImage}}" />
+
+  <link rel="alternate" hreflang="en" href="{{hrefEn}}" />
+  <link rel="alternate" hreflang="ja" href="{{hrefJa}}" />
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/shared/styles.css" />
+  <script src="/shared/config.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="{{base}}/" aria-label="Home">N</a>
+    {{nav}}
+  </header>
+
+  <main class="wrap">
+    <article class="card">
+      <h1 id="title">{{t:common.loading}}</h1>
+      <p id="date" class="meta"></p>
+      <p id="summary" class="muted"></p>
+      <div id="tags" class="chips"></div>
+      <hr class="divider" />
+      <div id="body"></div>
+    </article>
+  </main>
+
+  <script type="module">
+    import { mountLangToggle, qs, fetchOne, chips } from "/shared/app.js";
+    mountLangToggle();
+
+    const locale = "{{lang}}" === "ja" ? "ja-JP" : "en-US";
+    const formatDate = (value) => {
+      if (!value) return "";
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return value;
+      return new Intl.DateTimeFormat(locale, { year: "numeric", month: "short", day: "2-digit" }).format(date);
+    };
+
+    const copy = {
+      missingSlug: "{{t:common.missingSlug}}",
+      notFound: "{{t:common.notFound}}"
+    };
+
+    const slug = qs("slug");
+    if (!slug) {
+      document.getElementById("title").textContent = copy.missingSlug;
+      throw new Error("Missing slug");
+    }
+
+    const post = await fetchOne("blog", slug);
+    if (!post) {
+      document.getElementById("title").textContent = copy.notFound;
+      throw new Error("Not found");
+    }
+
+    document.title = `${post.title} — Blog`;
+    document.getElementById("title").textContent = post.title;
+    document.getElementById("date").textContent = formatDate(post.published_at);
+    document.getElementById("summary").textContent = post.summary || "";
+    document.getElementById("tags").replaceWith(chips(post.tags || []));
+    document.getElementById("body").innerHTML = post.body_html || "";
+  </script>
+</body>
+</html>

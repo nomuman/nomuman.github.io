@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{{t:work.meta.title}}</title>
+  <meta name="description" content="{{t:work.meta.description}}" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{t:work.meta.title}}" />
+  <meta property="og:description" content="{{t:work.meta.description}}" />
+  <meta property="og:url" content="{{ogUrl}}" />
+  <meta property="og:image" content="{{ogImage}}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{t:work.meta.title}}" />
+  <meta name="twitter:description" content="{{t:work.meta.description}}" />
+  <meta name="twitter:image" content="{{ogImage}}" />
+
+  <link rel="alternate" hreflang="en" href="{{hrefEn}}" />
+  <link rel="alternate" hreflang="ja" href="{{hrefJa}}" />
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/shared/styles.css" />
+  <script src="/shared/config.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="{{base}}/" aria-label="Home">N</a>
+    {{nav}}
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <h1>{{t:work.title}}</h1>
+      <p class="muted">{{t:work.lead}}</p>
+      <ul id="list" class="list"></ul>
+    </section>
+  </main>
+
+  <script type="module">
+    import { mountLangToggle, fetchList, el, chips } from "/shared/app.js";
+    mountLangToggle();
+
+    const ul = document.getElementById("list");
+    const items = await fetchList("work");
+
+    ul.replaceChildren(...items.map(x =>
+      el("li", { class: "item" }, [
+        el("h3", {}, [x.title]),
+        el("p", { class: "muted" }, [x.summary || ""]),
+        chips(x.stack || []),
+        el("div", { class: "links" }, [
+          el("a", { href: `{{base}}/work/item/?slug=${encodeURIComponent(x.slug)}` }, ["{{t:common.read}}"])
+        ])
+      ])
+    ));
+  </script>
+</body>
+</html>

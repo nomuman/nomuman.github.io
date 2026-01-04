@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{{t:artItem.meta.title}}</title>
+  <meta name="description" content="{{t:artItem.meta.description}}" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{t:artItem.meta.title}}" />
+  <meta property="og:description" content="{{t:artItem.meta.description}}" />
+  <meta property="og:url" content="{{ogUrl}}" />
+  <meta property="og:image" content="{{ogImage}}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{t:artItem.meta.title}}" />
+  <meta name="twitter:description" content="{{t:artItem.meta.description}}" />
+  <meta name="twitter:image" content="{{ogImage}}" />
+
+  <link rel="alternate" hreflang="en" href="{{hrefEn}}" />
+  <link rel="alternate" hreflang="ja" href="{{hrefJa}}" />
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/shared/styles.css" />
+  <script src="/shared/config.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="{{base}}/" aria-label="Home">N</a>
+    {{nav}}
+  </header>
+
+  <main class="wrap">
+    <article class="card">
+      <h1 id="title">{{t:common.loading}}</h1>
+      <p id="meta" class="meta"></p>
+      <div id="tags" class="chips"></div>
+      <hr class="divider" />
+      <div id="body"></div>
+    </article>
+  </main>
+
+  <script type="module">
+    import { mountLangToggle, qs, fetchOne, chips } from "/shared/app.js";
+    mountLangToggle();
+
+    const copy = {
+      missingSlug: "{{t:common.missingSlug}}",
+      notFound: "{{t:common.notFound}}"
+    };
+
+    const slug = qs("slug");
+    if (!slug) {
+      document.getElementById("title").textContent = copy.missingSlug;
+      throw new Error("Missing slug");
+    }
+
+    const item = await fetchOne("art", slug);
+    if (!item) {
+      document.getElementById("title").textContent = copy.notFound;
+      throw new Error("Not found");
+    }
+
+    document.title = `${item.title} — Art`;
+    document.getElementById("title").textContent = item.title;
+    const meta = [item.medium, item.year].filter(Boolean).join(" · ");
+    document.getElementById("meta").textContent = meta;
+    document.getElementById("tags").replaceWith(chips(item.tags || []));
+    document.getElementById("body").innerHTML = item.body_html || "";
+  </script>
+</body>
+</html>

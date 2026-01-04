@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Press / Featured — Nomuman</title>
+  <meta name="description" content="外部掲載・紹介の一覧。" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Press / Featured — Nomuman" />
+  <meta property="og:description" content="外部掲載・紹介の一覧。" />
+  <meta property="og:url" content="https://nomuman.github.io/ja/featured/" />
+  <meta property="og:image" content="https://nomuman.github.io/assets/ogp.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Press / Featured — Nomuman" />
+  <meta name="twitter:description" content="外部掲載・紹介の一覧。" />
+  <meta name="twitter:image" content="https://nomuman.github.io/assets/ogp.png" />
+
+  <link rel="alternate" hreflang="en" href="https://nomuman.github.io/featured/" />
+  <link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/featured/" />
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/shared/styles.css" />
+  <script src="/shared/config.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/ja/" aria-label="Home">N</a>
+    <nav class="nav">
+  <a href="/ja/work/">Work</a>
+  <a href="/ja/blog/">Blog</a>
+  <a href="/ja/art/">Art</a>
+  <a href="/ja/books/">Books</a>
+  <a href="/ja/about/">About</a>
+  <a class="cta" href="mailto:you@example.com">連絡する</a>
+  <a data-lang-toggle href="/featured/">EN</a>
+</nav>
+
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <h1>Press / Featured</h1>
+      <p class="muted">外部で紹介された記事や事例の一覧。</p>
+      <div class="links">
+        <a href="/ja/writing/">Writing</a>
+        <a href="/ja/featured/">Press / Featured</a>
+        <a href="/ja/talks/">Talks / Demos</a>
+      </div>
+      <ul id="featured-list" class="list"></ul>
+    </section>
+  </main>
+
+  <script type="module">
+    import { mountLangToggle, fetchWriting, el, chips } from "/shared/app.js";
+    mountLangToggle();
+
+    const locale = "ja" === "ja" ? "ja-JP" : "en-US";
+    const formatDate = (value) => {
+      if (!value) return "";
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return value;
+      return new Intl.DateTimeFormat(locale, { year: "numeric", month: "short", day: "2-digit" }).format(date);
+    };
+
+    const withBadge = (titleNode, item) => {
+      if (item.content_lang === "ja") {
+        return el("span", {}, [
+          titleNode,
+          el("span", { class: "badge" }, ["JA"])
+        ]);
+      }
+      return titleNode;
+    };
+
+    const renderExternal = (listEl, items) => {
+      listEl.replaceChildren(...items.map((item) => {
+        const meta = [item.outlet, item.type, formatDate(item.published_at)].filter(Boolean).join(" · ");
+        return el("li", { class: "item" }, [
+          el("h3", {}, [
+            withBadge(
+              el("a", { href: item.url, target: "_blank", rel: "noopener noreferrer" }, [item.title]),
+              item
+            )
+          ]),
+          meta ? el("p", { class: "meta" }, [meta]) : document.createTextNode(""),
+          item.summary ? el("p", { class: "muted" }, [item.summary]) : document.createTextNode(""),
+          item.tags && item.tags.length ? chips(item.tags) : document.createTextNode("")
+        ]);
+      }));
+    };
+
+    const items = await fetchWriting("featured");
+    renderExternal(document.getElementById("featured-list"), items);
+  </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Work — Nomuman</title>
+  <meta name="description" content="Selected product and engineering work." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Work — Nomuman" />
+  <meta property="og:description" content="Selected product and engineering work." />
+  <meta property="og:url" content="https://nomuman.github.io/work/" />
+  <meta property="og:image" content="https://nomuman.github.io/assets/ogp.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Work — Nomuman" />
+  <meta name="twitter:description" content="Selected product and engineering work." />
+  <meta name="twitter:image" content="https://nomuman.github.io/assets/ogp.png" />
+
+  <link rel="alternate" hreflang="en" href="https://nomuman.github.io/work/" />
+  <link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/work/" />
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/shared/styles.css" />
+  <script src="/shared/config.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Home">N</a>
+    <nav class="nav">
+  <a href="/work/">Work</a>
+  <a href="/blog/">Blog</a>
+  <a href="/art/">Art</a>
+  <a href="/books/">Books</a>
+  <a href="/about/">About</a>
+  <a class="cta" href="mailto:you@example.com">Get in touch</a>
+  <a data-lang-toggle href="/ja/work/">JA</a>
+</nav>
+
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <h1>Work</h1>
+      <p class="muted">Product, mobile, and web projects.</p>
+      <ul id="list" class="list"></ul>
+    </section>
+  </main>
+
+  <script type="module">
+    import { mountLangToggle, fetchList, el, chips } from "/shared/app.js";
+    mountLangToggle();
+
+    const ul = document.getElementById("list");
+    const items = await fetchList("work");
+
+    ul.replaceChildren(...items.map(x =>
+      el("li", { class: "item" }, [
+        el("h3", {}, [x.title]),
+        el("p", { class: "muted" }, [x.summary || ""]),
+        chips(x.stack || []),
+        el("div", { class: "links" }, [
+          el("a", { href: `/work/item/?slug=${encodeURIComponent(x.slug)}` }, ["Read"])
+        ])
+      ])
+    ));
+  </script>
+</body>
+</html>

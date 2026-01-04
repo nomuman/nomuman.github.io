@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Art — Nomuman</title>
+  <meta name="description" content="Illustrations and visual studies." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Art — Nomuman" />
+  <meta property="og:description" content="Illustrations and visual studies." />
+  <meta property="og:url" content="https://nomuman.github.io/art/" />
+  <meta property="og:image" content="https://nomuman.github.io/assets/ogp.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Art — Nomuman" />
+  <meta name="twitter:description" content="Illustrations and visual studies." />
+  <meta name="twitter:image" content="https://nomuman.github.io/assets/ogp.png" />
+
+  <link rel="alternate" hreflang="en" href="https://nomuman.github.io/art/" />
+  <link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/art/" />
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/shared/styles.css" />
+  <script src="/shared/config.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Home">N</a>
+    <nav class="nav">
+  <a href="/work/">Work</a>
+  <a href="/blog/">Blog</a>
+  <a href="/art/">Art</a>
+  <a href="/books/">Books</a>
+  <a href="/about/">About</a>
+  <a class="cta" href="mailto:you@example.com">Get in touch</a>
+  <a data-lang-toggle href="/ja/art/">JA</a>
+</nav>
+
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <h1>Art</h1>
+      <p class="muted">Small studies and finished pieces.</p>
+      <div id="list" class="grid2"></div>
+    </section>
+  </main>
+
+  <script type="module">
+    import { mountLangToggle, fetchList, el, chips } from "/shared/app.js";
+    mountLangToggle();
+
+    const list = document.getElementById("list");
+    const items = await fetchList("art");
+
+    list.replaceChildren(...items.map(x =>
+      el("article", { class: "card" }, [
+        el("h3", {}, [x.title]),
+        el("p", { class: "muted" }, [x.medium || (x.year ? String(x.year) : "")]),
+        chips(x.tags || []),
+        el("div", { class: "links" }, [
+          el("a", { href: `/art/item/?slug=${encodeURIComponent(x.slug)}` }, ["View"])
+        ])
+      ])
+    ));
+  </script>
+</body>
+</html>
