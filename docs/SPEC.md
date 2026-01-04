@@ -359,8 +359,8 @@ h1{ margin:0 0 12px; font-size:clamp(36px, 5vw, 64px); line-height:1.05; }
 
       <div class="links">
         <a href="mailto:you@example.com">Email</a>
-        <a href="https://x.com/your_x" target="_blank" rel="noreferrer">X</a>
-        <a href="https://github.com/your_github" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://x.com/nomuman_" target="_blank" rel="noreferrer">X</a>
+        <a href="https://github.com/nomuman" target="_blank" rel="noreferrer">GitHub</a>
       </div>
     </section>
 
@@ -439,8 +439,8 @@ h1{ margin:0 0 12px; font-size:clamp(36px, 5vw, 64px); line-height:1.05; }
 
       <div class="links">
         <a href="mailto:you@example.com">Email</a>
-        <a href="https://x.com/your_x" target="_blank" rel="noreferrer">X</a>
-        <a href="https://github.com/your_github" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://x.com/nomuman_" target="_blank" rel="noreferrer">X</a>
+        <a href="https://github.com/nomuman" target="_blank" rel="noreferrer">GitHub</a>
       </div>
     </section>
 

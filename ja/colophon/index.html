@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Colophon — Nomuman</title>
+  <meta name="description" content="このサイトの構成。" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Colophon — Nomuman" />
+  <meta property="og:description" content="このサイトの構成。" />
+  <meta property="og:url" content="https://nomuman.github.io/ja/colophon/" />
+  <meta property="og:image" content="https://nomuman.github.io/assets/ogp.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Colophon — Nomuman" />
+  <meta name="twitter:description" content="このサイトの構成。" />
+  <meta name="twitter:image" content="https://nomuman.github.io/assets/ogp.svg" />
+
+  <link rel="alternate" hreflang="en" href="https://nomuman.github.io/colophon/" />
+  <link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/colophon/" />
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/shared/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/ja/" aria-label="Home">N</a>
+    <nav class="nav">
+      <a href="/ja/work/">Work</a>
+      <a href="/ja/blog/">Blog</a>
+      <a href="/ja/art/">Art</a>
+      <a href="/ja/books/">Books</a>
+      <a href="/ja/about/">About</a>
+      <a data-lang-toggle href="/colophon/">EN</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <h1>Colophon</h1>
+      <p class="muted">このサイトの構成や方針をまとめています。</p>
+      <ul class="list">
+        <li class="item">
+          <strong>技術</strong>
+          <p class="muted">Pure HTML / CSS / Vanilla JS で構成。</p>
+        </li>
+        <li class="item">
+          <strong>ホスティング</strong>
+          <p class="muted">GitHub Pages の静的配信。</p>
+        </li>
+        <li class="item">
+          <strong>データ</strong>
+          <p class="muted">Supabase の REST API を参照（RLSで公開範囲を制御）。</p>
+        </li>
+        <li class="item">
+          <strong>デザイン</strong>
+          <p class="muted">ネオブルータリズム + 赤 + 柴犬のトレードマーク。</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <script type="module">
+    import { mountLangToggle } from "/shared/app.js";
+    mountLangToggle();
+  </script>
+</body>
+</html>

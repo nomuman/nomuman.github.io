@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About — Nomuman</title>
+  <meta name="description" content="プロフィールと経歴。" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="About — Nomuman" />
+  <meta property="og:description" content="プロフィールと経歴。" />
+  <meta property="og:url" content="https://nomuman.github.io/ja/about/" />
+  <meta property="og:image" content="https://nomuman.github.io/assets/ogp.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About — Nomuman" />
+  <meta name="twitter:description" content="プロフィールと経歴。" />
+  <meta name="twitter:image" content="https://nomuman.github.io/assets/ogp.svg" />
+
+  <link rel="alternate" hreflang="en" href="https://nomuman.github.io/about/" />
+  <link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/about/" />
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/shared/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/ja/" aria-label="Home">N</a>
+    <nav class="nav">
+      <a href="/ja/work/">Work</a>
+      <a href="/ja/blog/">Blog</a>
+      <a href="/ja/art/">Art</a>
+      <a href="/ja/books/">Books</a>
+      <a href="/ja/about/" aria-current="page">About</a>
+      <a data-lang-toggle href="/about/">EN</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <p class="kicker">こんにちは</p>
+      <h1>About Nomuman</h1>
+      <p class="lead">読みやすく軽い体験を作ることにこだわるプロダクトエンジニアです。</p>
+      <div class="links">
+        <a href="mailto:you@example.com">you@example.com</a>
+        <a href="https://x.com/your_x" target="_blank" rel="noreferrer">X</a>
+        <a href="https://github.com/your_github" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Journey</h2>
+      <ul class="list timeline">
+        <li class="item">
+          <div class="role">Senior Engineer @ Studio Nova</div>
+          <div class="meta">2023 — Now · Tokyo</div>
+          <div>モバイル/ウェブの施策をリード。</div>
+        </li>
+        <li class="item">
+          <div class="role">Product Engineer @ Lumen</div>
+          <div class="meta">2020 — 2023 · Remote</div>
+          <div>機能改善とオンボーディング最適化を担当。</div>
+        </li>
+        <li class="item">
+          <div class="role">Frontend Engineer @ Kodo</div>
+          <div class="meta">2018 — 2020 · Osaka</div>
+          <div>デザインシステムと性能改善に注力。</div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Skills</h2>
+      <div class="grid2">
+        <div class="skill-group">
+          <h3>Product</h3>
+          <div class="chips">
+            <span>Strategy</span><span>UX</span><span>Design Systems</span><span>Analytics</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Engineering</h3>
+          <div class="chips">
+            <span>TypeScript</span><span>Flutter</span><span>Go</span><span>Supabase</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Contact</h2>
+      <p class="muted">お仕事の相談や雑談も歓迎です。</p>
+      <div class="links">
+        <a href="mailto:you@example.com">Email</a>
+        <a href="https://x.com/your_x" target="_blank" rel="noreferrer">X</a>
+        <a href="https://github.com/your_github" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    import { mountLangToggle } from "/shared/app.js";
+    mountLangToggle();
+  </script>
+</body>
+</html>

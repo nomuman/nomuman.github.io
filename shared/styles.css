@@ -218,9 +218,16 @@ h3 {
 }
 
 .timeline .meta,
-.item .meta {
+.item .meta,
+.meta {
   color: var(--muted);
   font-size: 0.92rem;
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid rgba(245, 245, 247, 0.2);
+  margin: 16px 0;
 }
 
 .skill-group h3 {

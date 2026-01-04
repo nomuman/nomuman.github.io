@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Art — Nomuman</title>
+  <meta name="description" content="Art detail." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Art — Nomuman" />
+  <meta property="og:description" content="Art detail." />
+  <meta property="og:url" content="https://nomuman.github.io/art/item/" />
+  <meta property="og:image" content="https://nomuman.github.io/assets/ogp.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Art — Nomuman" />
+  <meta name="twitter:description" content="Art detail." />
+  <meta name="twitter:image" content="https://nomuman.github.io/assets/ogp.svg" />
+
+  <link rel="alternate" hreflang="en" href="https://nomuman.github.io/art/item/" />
+  <link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/art/item/" />
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/shared/styles.css" />
+  <script src="/shared/config.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Home">N</a>
+    <nav class="nav">
+      <a href="/art/">Back</a>
+      <a data-lang-toggle href="/ja/art/item/">JA</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <article class="card">
+      <h1 id="title">Loading…</h1>
+      <p id="meta" class="meta"></p>
+      <div id="tags" class="chips"></div>
+      <hr class="divider" />
+      <div id="body"></div>
+    </article>
+  </main>
+
+  <script type="module">
+    import { mountLangToggle, qs, fetchOne, chips } from "/shared/app.js";
+    mountLangToggle();
+
+    const slug = qs("slug");
+    if (!slug) {
+      document.getElementById("title").textContent = "Missing slug";
+      throw new Error("Missing slug");
+    }
+
+    const item = await fetchOne("art", slug);
+    if (!item) {
+      document.getElementById("title").textContent = "Not found";
+      throw new Error("Not found");
+    }
+
+    document.title = `${item.title} — Art`;
+    document.getElementById("title").textContent = item.title;
+    const meta = [item.medium, item.year].filter(Boolean).join(" · ");
+    document.getElementById("meta").textContent = meta;
+    document.getElementById("tags").replaceWith(chips(item.tags || []));
+    document.getElementById("body").innerHTML = item.body_html || "";
+  </script>
+</body>
+</html>
