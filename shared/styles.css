@@ -212,6 +212,10 @@ h3,
   position: relative;
 }
 
+.card[data-stamp] {
+  padding-top: 26px;
+}
+
 .card[data-stamp]::before {
   content: attr(data-stamp);
   position: absolute;
