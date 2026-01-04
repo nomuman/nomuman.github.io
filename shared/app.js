@@ -87,6 +87,15 @@ export async function fetchList(kind) {
   throw new Error("Unknown kind");
 }
 
+export async function fetchWriting(kind) {
+  const lang = detectLang();
+  const api = supabase();
+
+  return api.get(
+    `writing_items?select=title,summary,outlet,published_at,type,role,url,tags,content_lang&kind=eq.${kind}&lang=eq.${lang}&published=eq.true&order=published_at.desc`
+  );
+}
+
 export async function fetchOne(kind, slug) {
   const lang = detectLang();
   const api = supabase();
