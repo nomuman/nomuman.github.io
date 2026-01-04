@@ -20,7 +20,7 @@
 
 ```sql
 -- 必要ならUUID生成用（Supabaseでは多くの環境で既に有効）
--- create extension if not exists "pgcrypto";
+create extension if not exists "pgcrypto";
 
 -- 共通：更新日時を自動更新したい場合のtrigger（任意）
 create or replace function public.set_updated_at()
@@ -283,9 +283,9 @@ curl -s \
 
 ## 6) GitHub Pages 側の作業（最小）
 
-1. `shared/config.js` の `<username>` / `<project_ref>` / `<anon_key>` を埋める
+1. `shared/config.js` の `nomuman` / `<project_ref>` / `<anon_key>` を埋める
 2. push
-3. `https://<username>.github.io/` を開いて、Featured が出れば成功
+3. `https://nomuman.github.io/` を開いて、Featured が出れば成功
    （User site リポジトリは `username.github.io` で作るのが公式Quickstart） ([GitHub Docs][1])
 
 ---
@@ -298,8 +298,8 @@ Googleは「hreflangはローカライズ版の対応関係を伝える」ため
 **ENページ例（/work/）**
 
 ```html
-<link rel="alternate" hreflang="en" href="https://<username>.github.io/work/" />
-<link rel="alternate" hreflang="ja" href="https://<username>.github.io/ja/work/" />
+<link rel="alternate" hreflang="en" href="https://nomuman.github.io/work/" />
+<link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/work/" />
 ```
 
 ---

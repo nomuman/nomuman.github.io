@@ -71,7 +71,7 @@
 // 公開OK: anon key（publishable key）
 // 絶対NG: service_role key
 window.__APP_CONFIG__ = {
-  SITE_ORIGIN: "https://<username>.github.io", // 後で置換
+  SITE_ORIGIN: "https://nomuman.github.io", // 後で置換
   SUPABASE_URL: "https://<project_ref>.supabase.co",
   SUPABASE_ANON_KEY: "<anon_key>",
 };
@@ -331,8 +331,8 @@ h1{ margin:0 0 12px; font-size:clamp(36px, 5vw, 64px); line-height:1.05; }
   <title>Natsume</title>
   <meta name="description" content="Portfolio, blog, art, and books." />
 
-  <link rel="alternate" hreflang="en" href="https://<username>.github.io/" />
-  <link rel="alternate" hreflang="ja" href="https://<username>.github.io/ja/" />
+  <link rel="alternate" hreflang="en" href="https://nomuman.github.io/" />
+  <link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/" />
 
   <link rel="stylesheet" href="/shared/styles.css" />
   <script src="/shared/config.js"></script>
@@ -411,8 +411,8 @@ h1{ margin:0 0 12px; font-size:clamp(36px, 5vw, 64px); line-height:1.05; }
   <title>Natsume</title>
   <meta name="description" content="ポートフォリオ、ブログ、アート、読書ログ。" />
 
-  <link rel="alternate" hreflang="en" href="https://<username>.github.io/" />
-  <link rel="alternate" hreflang="ja" href="https://<username>.github.io/ja/" />
+  <link rel="alternate" hreflang="en" href="https://nomuman.github.io/" />
+  <link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/" />
 
   <link rel="stylesheet" href="/shared/styles.css" />
   <script src="/shared/config.js"></script>
@@ -493,8 +493,8 @@ h1{ margin:0 0 12px; font-size:clamp(36px, 5vw, 64px); line-height:1.05; }
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Work — Natsume</title>
 
-  <link rel="alternate" hreflang="en" href="https://<username>.github.io/work/" />
-  <link rel="alternate" hreflang="ja" href="https://<username>.github.io/ja/work/" />
+  <link rel="alternate" hreflang="en" href="https://nomuman.github.io/work/" />
+  <link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/work/" />
 
   <link rel="stylesheet" href="/shared/styles.css" />
   <script src="/shared/config.js"></script>

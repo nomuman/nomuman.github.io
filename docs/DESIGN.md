@@ -96,8 +96,8 @@ JA：
 
 **テンプレ（EN記事ページのhead）**
 ```html
-<link rel="alternate" hreflang="en" href="https://<username>.github.io/blog/<slug>/" />
-<link rel="alternate" hreflang="ja" href="https://<username>.github.io/ja/blog/<slug>/" />
+<link rel="alternate" hreflang="en" href="https://nomuman.github.io/blog/<slug>/" />
+<link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/blog/<slug>/" />
 ````
 
 ---
