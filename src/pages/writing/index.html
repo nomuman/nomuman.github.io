@@ -51,8 +51,9 @@
   </main>
 
   <script type="module">
-    import { mountLangToggle, fetchWriting, el, chips } from "/shared/app.js";
+    import { mountLangToggle, mountTopbar, fetchWriting, el, chips } from "/shared/app.js";
     mountLangToggle();
+    mountTopbar();
 
     const locale = "{{lang}}" === "ja" ? "ja-JP" : "en-US";
     const formatDate = (value) => {

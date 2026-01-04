@@ -53,8 +53,9 @@
   </main>
 
   <script type="module">
-    import { mountLangToggle, qs, fetchOne, chips, linkRow } from "/shared/app.js";
+    import { mountLangToggle, mountTopbar, qs, fetchOne, chips, linkRow } from "/shared/app.js";
     mountLangToggle();
+    mountTopbar();
 
     const copy = {
       missingSlug: "Missing slug",

@@ -169,9 +169,10 @@
   </main>
 
   <script type="module">
-    import { mountLangToggle, setYear, fetchList, el, chips } from "/shared/app.js";
+    import { mountLangToggle, mountTopbar, setYear, fetchList, el, chips } from "/shared/app.js";
 
     mountLangToggle();
+    mountTopbar();
     setYear();
 
     const status = document.getElementById("highlight-status");

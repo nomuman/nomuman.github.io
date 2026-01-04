@@ -17,6 +17,49 @@ export function mountLangToggle() {
   a.textContent = detectLang() === "ja" ? "EN" : "JA";
 }
 
+export function mountTopbar() {
+  const topbar = document.querySelector(".topbar");
+  if (!topbar) return;
+
+  let lastY = window.scrollY;
+  let hidden = false;
+  const minDelta = 6;
+  const showAt = 12;
+
+  const update = () => {
+    const y = window.scrollY;
+    if (y <= showAt) {
+      if (hidden) topbar.classList.remove("topbar--hidden");
+      hidden = false;
+      lastY = y;
+      return;
+    }
+
+    if (y > lastY + minDelta && !hidden) {
+      topbar.classList.add("topbar--hidden");
+      hidden = true;
+    } else if (y < lastY - minDelta && hidden) {
+      topbar.classList.remove("topbar--hidden");
+      hidden = false;
+    }
+    lastY = y;
+  };
+
+  let ticking = false;
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        update();
+        ticking = false;
+      });
+    },
+    { passive: true }
+  );
+}
+
 export function setYear() {
   const el = document.querySelector("[data-year]");
   if (el) el.textContent = String(new Date().getFullYear());
