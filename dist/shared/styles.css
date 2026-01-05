@@ -6,8 +6,8 @@
   --card: #151011;
   --border: #f6f2f0;
   --border-subtle: rgba(246, 242, 240, 0.2);
-  --accent: #e5232a;
-  --accent-soft: rgba(229, 35, 42, 0.14);
+  --accent: #d84b4b;
+  --accent-soft: rgba(216, 75, 75, 0.14);
   --accent-ink: #120b0b;
   --focus: var(--accent);
   --shadow-color: rgba(246, 242, 240, 0.75);
@@ -19,6 +19,8 @@
   --chip-border: rgba(246, 242, 240, 0.35);
   --link-underline: rgba(246, 242, 240, 0.25);
   --max: 960px;
+  --motion-enter: 240ms;
+  --motion-curve: cubic-bezier(0.2, 0.75, 0.2, 1);
 }
 
 :root[data-theme="light"] {
@@ -29,8 +31,8 @@
   --card: #fffaf6;
   --border: #1b1414;
   --border-subtle: rgba(27, 20, 20, 0.2);
-  --accent: #e5232a;
-  --accent-soft: rgba(229, 35, 42, 0.18);
+  --accent: #d84b4b;
+  --accent-soft: rgba(216, 75, 75, 0.18);
   --accent-ink: #120b0b;
   --shadow-color: rgba(27, 20, 20, 0.35);
   --shadow: 6px 6px 0 var(--shadow-color);
@@ -51,8 +53,8 @@
     --card: #fffaf6;
     --border: #1b1414;
     --border-subtle: rgba(27, 20, 20, 0.2);
-    --accent: #e5232a;
-    --accent-soft: rgba(229, 35, 42, 0.18);
+    --accent: #d84b4b;
+    --accent-soft: rgba(216, 75, 75, 0.18);
     --accent-ink: #120b0b;
     --shadow-color: rgba(27, 20, 20, 0.35);
     --shadow: 6px 6px 0 var(--shadow-color);
@@ -95,6 +97,21 @@ body {
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial;
   line-height: 1.55;
   font-size: 16px;
+  opacity: 1;
+  transform: translateY(0);
+  animation: page-enter var(--motion-enter) var(--motion-curve) forwards;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 1;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 a {
@@ -251,6 +268,10 @@ button:focus-visible {
   max-width: var(--max);
   margin: 0 auto;
   padding: 32px 24px 64px;
+}
+
+.wrap > section {
+  margin-bottom: 28px;
 }
 
 .wrap > * + * {
@@ -543,6 +564,12 @@ h3,
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  body {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 
   .btn {

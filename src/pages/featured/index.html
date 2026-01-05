@@ -25,7 +25,9 @@
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="{{base}}/" aria-label="Home">N</a>
+    <a class="brand" href="{{base}}/" aria-label="Home">
+      <img src="/assets/favicon.png" alt="Home" width="32" height="32" />
+    </a>
     {{nav}}
   </header>
 
@@ -33,11 +35,7 @@
     <section class="card" data-stamp="{{t:featured.title}}">
       <h1>{{t:featured.title}}</h1>
       <p class="muted">{{t:featured.lead}}</p>
-      <div class="links">
-        <a href="{{base}}/writing/">{{t:writing.links.writing}}</a>
-        <a href="{{base}}/featured/">{{t:writing.links.featured}}</a>
-        <a href="{{base}}/talks/">{{t:writing.links.talks}}</a>
-      </div>
+
       <ul id="featured-list" class="list"></ul>
     </section>
   </main>

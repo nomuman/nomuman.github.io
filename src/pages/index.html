@@ -25,7 +25,9 @@
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="{{base}}/" aria-label="Home">N</a>
+    <a class="brand" href="{{base}}/" aria-label="Home">
+      <img src="/assets/favicon.png" alt="Home" width="32" height="32" />
+    </a>
     {{nav}}
   </header>
 
@@ -35,20 +37,6 @@
       <h1>{{t:home.heroTitle}}</h1>
       <p class="lead">{{t:home.heroLead}}</p>
       <p class="motto">{{t:home.heroMotto}}</p>
-      <div class="chips chips--lite interest-chips">
-        <span data-accent="true">{{t:theme.chips.0}}</span>
-        <span>{{t:theme.chips.1}}</span>
-        <span>{{t:theme.chips.2}}</span>
-        <span>{{t:theme.chips.3}}</span>
-        <span>{{t:theme.chips.4}}</span>
-        <span data-accent="true">{{t:theme.chips.5}}</span>
-      </div>
-
-      <div class="links">
-        <a href="mailto:senri.gotoda@gmail.com">Email</a>
-        <a href="https://x.com/nomuman_" target="_blank" rel="noreferrer">X</a>
-        <a href="https://github.com/nomuman" target="_blank" rel="noreferrer">GitHub</a>
-      </div>
     </section>
 
     <section class="card" id="about" data-stamp="{{t:home.about.title}}">
