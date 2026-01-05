@@ -42,7 +42,6 @@ const pages = [
   { src: "src/pages/art/index.html", path: "/art/", nav: "main" },
   { src: "src/pages/art/item/index.html", path: "/art/item/", nav: "back", backPath: "/art/" },
   { src: "src/pages/books/index.html", path: "/books/", nav: "main" },
-  { src: "src/pages/about/index.html", path: "/about/", nav: "main" },
   { src: "src/pages/colophon/index.html", path: "/colophon/", nav: "main" },
   { src: "src/pages/writing/index.html", path: "/writing/", nav: "main" },
   { src: "src/pages/featured/index.html", path: "/featured/", nav: "main" },

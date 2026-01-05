@@ -53,6 +53,17 @@
 
       <section class="card" id="about" data-stamp="{{t:home.about.title}}">
         <h2 class="sr-only">{{t:home.about.title}}</h2>
+        <p class="muted">{{t:home.about.fullName}}</p>
+        <p class="lead">{{t:home.about.lead}}</p>
+        <p class="motto">{{t:home.about.motto}}</p>
+        <div class="chips chips--lite interest-chips">
+          <span data-accent="true">{{t:theme.chips.0}}</span>
+          <span>{{t:theme.chips.1}}</span>
+          <span>{{t:theme.chips.2}}</span>
+          <span>{{t:theme.chips.3}}</span>
+          <span>{{t:theme.chips.4}}</span>
+          <span data-accent="true">{{t:theme.chips.5}}</span>
+        </div>
         <p class="muted">{{t:home.about.body}}</p>
       </section>
 
@@ -122,6 +133,13 @@
       <section class="card" id="skills" data-stamp="{{t:home.skills.title}}">
         <h2 class="sr-only">{{t:home.skills.title}}</h2>
         <div class="grid2">
+          <div class="skill-group">
+            <h3>{{t:home.skills.group.product}}</h3>
+            <div class="chips">
+              <span>Project Management</span><span>New Business</span><span>Requirements</span
+              ><span>Marketing</span>
+            </div>
+          </div>
           <div class="skill-group">
             <h3>{{t:home.skills.group.languages}}</h3>
             <div class="chips">
