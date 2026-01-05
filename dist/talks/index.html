@@ -1,34 +1,34 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Talks / Demos — nomuman</title>
-  <meta name="description" content="Talks, demos, and event listings." />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Talks / Demos — nomuman</title>
+    <meta name="description" content="Talks, demos, and event listings." />
 
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Talks / Demos — nomuman" />
-  <meta property="og:description" content="Talks, demos, and event listings." />
-  <meta property="og:url" content="https://nomuman.github.io/talks/" />
-  <meta property="og:image" content="https://nomuman.github.io/assets/ogp.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Talks / Demos — nomuman" />
-  <meta name="twitter:description" content="Talks, demos, and event listings." />
-  <meta name="twitter:image" content="https://nomuman.github.io/assets/ogp.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Talks / Demos — nomuman" />
+    <meta property="og:description" content="Talks, demos, and event listings." />
+    <meta property="og:url" content="https://nomuman.github.io/talks/" />
+    <meta property="og:image" content="https://nomuman.github.io/assets/ogp.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Talks / Demos — nomuman" />
+    <meta name="twitter:description" content="Talks, demos, and event listings." />
+    <meta name="twitter:image" content="https://nomuman.github.io/assets/ogp.png" />
 
-  <link rel="alternate" hreflang="en" href="https://nomuman.github.io/talks/" />
-  <link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/talks/" />
+    <link rel="alternate" hreflang="en" href="https://nomuman.github.io/talks/" />
+    <link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/talks/" />
 
-  <link rel="icon" href="/assets/favicon.png" type="image/png" />
-  <link rel="stylesheet" href="/shared/styles.css" />
-  <script src="/shared/config.js"></script>
-</head>
-<body>
-  <header class="topbar">
-    <a class="brand" href="/" aria-label="Home">
-      <img src="/assets/favicon.png" alt="Home" width="32" height="32" />
-    </a>
-    <nav class="nav nav--main" aria-label="Primary">
+    <link rel="icon" href="/assets/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="/shared/styles.css" />
+    <script src="/shared/config.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Home">
+        <img src="/assets/favicon.png" alt="Home" width="32" height="32" />
+      </a>
+      <nav class="nav nav--main" aria-label="Primary">
   <!-- TODO: Work/Art/Books will be re-enabled later -->
   <!-- <a href="/work/">Work</a> -->
   <a href="/blog/">Blog</a>
@@ -44,60 +44,76 @@
   </div>
 </nav>
 
-  </header>
+    </header>
 
-  <main class="wrap">
-    <section class="card" data-stamp="Talks / Demos">
-      <h1>Talks / Demos</h1>
-      <p class="muted">Talks, demos, and event listings.</p>
+    <main class="wrap">
+      <section class="card" data-stamp="Talks / Demos">
+        <h1>Talks / Demos</h1>
+        <p class="muted">Talks, demos, and event listings.</p>
 
-      <ul id="talks-list" class="list"></ul>
-    </section>
-  </main>
+        <ul id="talks-list" class="list"></ul>
+      </section>
+    </main>
 
-  <script type="module">
-    import { mountLangToggle, mountThemeToggle, mountTopbar, fetchWriting, el, chips } from "/shared/app.js";
-    mountLangToggle();
-    mountThemeToggle();
-    mountTopbar();
+    <script type="module">
+      import {
+        mountLangToggle,
+        mountThemeToggle,
+        mountTopbar,
+        fetchWriting,
+        el,
+        chips,
+      } from "/shared/app.js";
+      mountLangToggle();
+      mountThemeToggle();
+      mountTopbar();
 
-    const locale = "en" === "ja" ? "ja-JP" : "en-US";
-    const formatDate = (value) => {
-      if (!value) return "";
-      const date = new Date(value);
-      if (Number.isNaN(date.getTime())) return value;
-      return new Intl.DateTimeFormat(locale, { year: "numeric", month: "short", day: "2-digit" }).format(date);
-    };
+      const locale = "en" === "ja" ? "ja-JP" : "en-US";
+      const formatDate = (value) => {
+        if (!value) return "";
+        const date = new Date(value);
+        if (Number.isNaN(date.getTime())) return value;
+        return new Intl.DateTimeFormat(locale, {
+          year: "numeric",
+          month: "short",
+          day: "2-digit",
+        }).format(date);
+      };
 
-    const withBadge = (titleNode, item) => {
-      if (item.content_lang === "ja") {
-        return el("span", {}, [
-          titleNode,
-          el("span", { class: "badge" }, ["JA"])
-        ]);
-      }
-      return titleNode;
-    };
+      const withBadge = (titleNode, item) => {
+        if (item.content_lang === "ja") {
+          return el("span", {}, [titleNode, el("span", { class: "badge" }, ["JA"])]);
+        }
+        return titleNode;
+      };
 
-    const renderExternal = (listEl, items) => {
-      listEl.replaceChildren(...items.map((item) => {
-        const meta = [item.outlet, item.type, item.role, formatDate(item.published_at)].filter(Boolean).join(" · ");
-        return el("li", { class: "item" }, [
-          el("h3", {}, [
-            withBadge(
-              el("a", { href: item.url, target: "_blank", rel: "noopener noreferrer" }, [item.title]),
-              item
-            )
-          ]),
-          meta ? el("p", { class: "meta" }, [meta]) : document.createTextNode(""),
-          item.summary ? el("p", { class: "muted" }, [item.summary]) : document.createTextNode(""),
-          item.tags && item.tags.length ? chips(item.tags) : document.createTextNode("")
-        ]);
-      }));
-    };
+      const renderExternal = (listEl, items) => {
+        listEl.replaceChildren(
+          ...items.map((item) => {
+            const meta = [item.outlet, item.type, item.role, formatDate(item.published_at)]
+              .filter(Boolean)
+              .join(" · ");
+            return el("li", { class: "item" }, [
+              el("h3", {}, [
+                withBadge(
+                  el("a", { href: item.url, target: "_blank", rel: "noopener noreferrer" }, [
+                    item.title,
+                  ]),
+                  item
+                ),
+              ]),
+              meta ? el("p", { class: "meta" }, [meta]) : document.createTextNode(""),
+              item.summary
+                ? el("p", { class: "muted" }, [item.summary])
+                : document.createTextNode(""),
+              item.tags && item.tags.length ? chips(item.tags) : document.createTextNode(""),
+            ]);
+          })
+        );
+      };
 
-    const items = await fetchWriting("talk");
-    renderExternal(document.getElementById("talks-list"), items);
-  </script>
-</body>
+      const items = await fetchWriting("talk");
+      renderExternal(document.getElementById("talks-list"), items);
+    </script>
+  </body>
 </html>

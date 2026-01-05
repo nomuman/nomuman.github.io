@@ -1,124 +1,70 @@
 <!doctype html>
 <html lang="{{lang}}">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>{{t:home.meta.title}}</title>
-  <meta name="description" content="{{t:home.meta.description}}" />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{{t:home.meta.title}}</title>
+    <meta name="description" content="{{t:home.meta.description}}" />
 
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="{{t:home.meta.title}}" />
-  <meta property="og:description" content="{{t:home.meta.description}}" />
-  <meta property="og:url" content="{{ogUrl}}" />
-  <meta property="og:image" content="{{ogImage}}" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="{{t:home.meta.title}}" />
-  <meta name="twitter:description" content="{{t:home.meta.description}}" />
-  <meta name="twitter:image" content="{{ogImage}}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{t:home.meta.title}}" />
+    <meta property="og:description" content="{{t:home.meta.description}}" />
+    <meta property="og:url" content="{{ogUrl}}" />
+    <meta property="og:image" content="{{ogImage}}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{t:home.meta.title}}" />
+    <meta name="twitter:description" content="{{t:home.meta.description}}" />
+    <meta name="twitter:image" content="{{ogImage}}" />
 
-  <link rel="alternate" hreflang="en" href="{{hrefEn}}" />
-  <link rel="alternate" hreflang="ja" href="{{hrefJa}}" />
+    <link rel="alternate" hreflang="en" href="{{hrefEn}}" />
+    <link rel="alternate" hreflang="ja" href="{{hrefJa}}" />
 
-  <link rel="icon" href="/assets/favicon.png" type="image/png" />
-  <link rel="stylesheet" href="/shared/styles.css" />
-  <script src="/shared/config.js"></script>
-</head>
-<body>
-  <header class="topbar">
-    <a class="brand" href="{{base}}/" aria-label="Home">
-      <img src="/assets/favicon.png" alt="Home" width="32" height="32" />
-    </a>
-    {{nav}}
-  </header>
+    <link rel="icon" href="/assets/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="/shared/styles.css" />
+    <script src="/shared/config.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="{{base}}/" aria-label="Home">
+        <img src="/assets/favicon.png" alt="Home" width="32" height="32" />
+      </a>
+      {{nav}}
+    </header>
 
-  <main class="wrap">
-    <section class="hero">
-      <p class="kicker">{{t:home.kicker}}</p>
-      <h1>{{t:home.heroTitle}}</h1>
-      <p class="lead">{{t:home.heroLead}}</p>
-      <p class="motto">{{t:home.heroMotto}}</p>
-    </section>
+    <main class="wrap">
+      <section class="hero">
+        <p class="kicker">{{t:home.kicker}}</p>
+        <h1>{{t:home.heroTitle}}</h1>
+        <p class="lead">{{t:home.heroLead}}</p>
+        <p class="motto">{{t:home.heroMotto}}</p>
+      </section>
 
-    <section class="card" id="about" data-stamp="{{t:home.about.title}}">
-      <h2 class="sr-only">{{t:home.about.title}}</h2>
-      <p class="muted">{{t:home.about.body}}</p>
-    </section>
+      <section class="card" id="about" data-stamp="{{t:home.about.title}}">
+        <h2 class="sr-only">{{t:home.about.title}}</h2>
+        <p class="muted">{{t:home.about.body}}</p>
+      </section>
 
-    <section class="card" id="journey" data-stamp="{{t:home.journey.title}}">
-      <h2 class="sr-only">{{t:home.journey.title}}</h2>
-      <ul class="list timeline">
-        <li class="item">
-          <div class="role">{{t:home.journey.0.role}}</div>
-          <div class="meta">{{t:home.journey.0.meta}}</div>
-          <div>{{t:home.journey.0.desc}}</div>
-        </li>
-        <li class="item">
-          <div class="role">{{t:home.journey.1.role}}</div>
-          <div class="meta">{{t:home.journey.1.meta}}</div>
-          <div>{{t:home.journey.1.desc}}</div>
-        </li>
-        <li class="item">
-          <div class="role">{{t:home.journey.2.role}}</div>
-          <div class="meta">{{t:home.journey.2.meta}}</div>
-          <div>{{t:home.journey.2.desc}}</div>
-        </li>
-        <li class="item">
-          <div class="role">{{t:home.journey.3.role}}</div>
-          <div class="meta">{{t:home.journey.3.meta}}</div>
-          <div>{{t:home.journey.3.desc}}</div>
-        </li>
-      </ul>
-    </section>
-
-    <section class="card" id="skills" data-stamp="{{t:home.skills.title}}">
-      <h2 class="sr-only">{{t:home.skills.title}}</h2>
-      <div class="grid2">
-        <div class="skill-group">
-          <h3>{{t:home.skills.group.languages}}</h3>
-          <div class="chips">
-            <span>Dart</span><span>TypeScript</span><span>JavaScript</span><span>Java</span><span>PHP</span><span>Swift</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h3>{{t:home.skills.group.mobile}}</h3>
-          <div class="chips">
-            <span>Flutter</span><span>Firebase</span><span>FlutterFlow</span><span>iOS</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h3>{{t:home.skills.group.web}}</h3>
-          <div class="chips">
-            <span>React</span><span>WordPress</span><span>HTML/CSS</span><span>JavaScript</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h3>{{t:home.skills.group.tools}}</h3>
-          <div class="chips">
-            <span>Google Cloud</span><span>AWS</span><span>GitHub</span><span>Figma</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="card" id="highlights" data-stamp="{{t:home.highlights.title}}">
-      <h2 class="sr-only">{{t:home.highlights.title}}</h2>
-      <p class="muted">{{t:home.highlights.lead}}</p>
-      <div class="grid2">
-        <article class="mini-card">
+      <section class="card" id="highlights" data-stamp="{{t:home.highlights.title}}">
+        <h2 class="sr-only">{{t:home.highlights.title}}</h2>
+        <p class="muted">{{t:home.highlights.lead}}</p>
+        <div class="grid2">
+          <!-- TODO: 未実装 -->
+          <!-- <article class="mini-card">
           <div class="mini-head">
             <h3>Work</h3>
             <a class="mini-link" href="{{base}}/work/">{{t:home.highlights.workLink}}</a>
           </div>
           <ul id="list-work" class="list"></ul>
-        </article>
-        <article class="mini-card">
-          <div class="mini-head">
-            <h3>Blog</h3>
-            <a class="mini-link" href="{{base}}/blog/">{{t:home.highlights.blogLink}}</a>
-          </div>
-          <ul id="list-blog" class="list"></ul>
-        </article>
-        <article class="mini-card">
+        </article> -->
+          <article class="mini-card">
+            <div class="mini-head">
+              <h3>Blog</h3>
+              <a class="mini-link" href="{{base}}/blog/">{{t:home.highlights.blogLink}}</a>
+            </div>
+            <ul id="list-blog" class="list"></ul>
+          </article>
+          <!-- TODO: 未実装 -->
+          <!-- <article class="mini-card">
           <div class="mini-head">
             <h3>Art</h3>
             <a class="mini-link" href="{{base}}/art/">{{t:home.highlights.artLink}}</a>
@@ -131,141 +77,224 @@
             <a class="mini-link" href="{{base}}/books/">{{t:home.highlights.booksLink}}</a>
           </div>
           <ul id="list-books" class="list"></ul>
-        </article>
-      </div>
-    </section>
+        </article> -->
+        </div>
+      </section>
 
-    <section class="card" id="contact" data-stamp="{{t:home.contact.title}}">
-      <h2 class="sr-only">{{t:home.contact.title}}</h2>
-      <p class="muted">{{t:home.contact.lead}}</p>
-      <div class="links">
-        <a href="mailto:senri.gotoda@gmail.com">senri.gotoda@gmail.com</a>
-        <a href="https://x.com/nomuman_" target="_blank" rel="noreferrer">X</a>
-        <a href="https://github.com/nomuman" target="_blank" rel="noreferrer">GitHub</a>
-      </div>
-    </section>
+      <section class="card" id="journey" data-stamp="{{t:home.journey.title}}">
+        <h2 class="sr-only">{{t:home.journey.title}}</h2>
+        <ul class="list timeline">
+          <li class="item">
+            <div class="role">{{t:home.journey.0.role}}</div>
+            <div class="meta">{{t:home.journey.0.meta}}</div>
+            <div>{{t:home.journey.0.desc}}</div>
+          </li>
+          <li class="item">
+            <div class="role">{{t:home.journey.1.role}}</div>
+            <div class="meta">{{t:home.journey.1.meta}}</div>
+            <div>{{t:home.journey.1.desc}}</div>
+          </li>
+          <li class="item">
+            <div class="role">{{t:home.journey.2.role}}</div>
+            <div class="meta">{{t:home.journey.2.meta}}</div>
+            <div>{{t:home.journey.2.desc}}</div>
+          </li>
+          <li class="item">
+            <div class="role">{{t:home.journey.3.role}}</div>
+            <div class="meta">{{t:home.journey.3.meta}}</div>
+            <div>{{t:home.journey.3.desc}}</div>
+          </li>
+        </ul>
+      </section>
 
-    {{footer}}
-  </main>
+      <section class="card" id="skills" data-stamp="{{t:home.skills.title}}">
+        <h2 class="sr-only">{{t:home.skills.title}}</h2>
+        <div class="grid2">
+          <div class="skill-group">
+            <h3>{{t:home.skills.group.languages}}</h3>
+            <div class="chips">
+              <span>Dart</span><span>TypeScript</span><span>JavaScript</span><span>Java</span
+              ><span>PHP</span><span>Swift</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>{{t:home.skills.group.mobile}}</h3>
+            <div class="chips">
+              <span>Flutter</span><span>Firebase</span><span>FlutterFlow</span><span>iOS</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>{{t:home.skills.group.web}}</h3>
+            <div class="chips">
+              <span>React</span><span>WordPress</span><span>HTML/CSS</span><span>JavaScript</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>{{t:home.skills.group.tools}}</h3>
+            <div class="chips">
+              <span>Google Cloud</span><span>AWS</span><span>GitHub</span><span>Figma</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <script type="module">
-    import { mountLangToggle, mountThemeToggle, mountTopbar, setYear, fetchList, el, chips } from "/shared/app.js";
+      <section class="card" id="contact" data-stamp="{{t:home.contact.title}}">
+        <h2 class="sr-only">{{t:home.contact.title}}</h2>
+        <p class="muted">{{t:home.contact.lead}}</p>
+        <div class="links">
+          <a href="mailto:senri.gotoda@gmail.com">senri.gotoda@gmail.com</a>
+          <a href="https://x.com/nomuman_" target="_blank" rel="noreferrer">X</a>
+          <a href="https://github.com/nomuman" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </section>
 
-    mountLangToggle();
-    mountThemeToggle();
-    mountTopbar();
-    setYear();
+      {{footer}}
+    </main>
 
-    const status = document.getElementById("highlight-status");
-    const listWork = document.getElementById("list-work");
-    const listBlog = document.getElementById("list-blog");
-    const listArt = document.getElementById("list-art");
-    const listBooks = document.getElementById("list-books");
+    <script type="module">
+      import {
+        mountLangToggle,
+        mountThemeToggle,
+        mountTopbar,
+        setYear,
+        fetchList,
+        el,
+        chips,
+      } from "/shared/app.js";
 
-    const t = {
-      read: "{{t:common.read}}",
-      view: "{{t:common.view}}",
-      more: "{{t:common.more}}",
-      loadingError: "{{t:home.highlights.loadingError}}",
-      empty: "{{t:home.highlights.empty}}"
-    };
+      mountLangToggle();
+      mountThemeToggle();
+      mountTopbar();
+      setYear();
 
-    const formatDate = (value) => {
-      if (!value) return "";
-      const date = new Date(value);
-      if (Number.isNaN(date.getTime())) return value;
-      return new Intl.DateTimeFormat("{{lang}}" === "ja" ? "ja-JP" : "en-US", { year: "numeric", month: "short", day: "2-digit" }).format(date);
-    };
+      const status = document.getElementById("highlight-status");
+      const listWork = document.getElementById("list-work");
+      const listBlog = document.getElementById("list-blog");
+      const listArt = document.getElementById("list-art");
+      const listBooks = document.getElementById("list-books");
 
-    function listItem({ title, meta, url, tags, label }) {
-      const titleNode = url
-        ? el("a", { href: url }, [title])
-        : document.createTextNode(title);
-      return el("li", { class: "item" }, [
-        el("h3", {}, [titleNode]),
-        meta ? el("p", { class: "meta" }, [meta]) : document.createTextNode(""),
-        tags && tags.length ? chips(tags) : document.createTextNode(""),
-        url && label
-          ? el("div", { class: "links" }, [el("a", { href: url }, [label])])
-          : document.createTextNode("")
-      ]);
-    }
+      const t = {
+        read: "{{t:common.read}}",
+        view: "{{t:common.view}}",
+        more: "{{t:common.more}}",
+        loadingError: "{{t:home.highlights.loadingError}}",
+        empty: "{{t:home.highlights.empty}}",
+      };
 
-    function fillEmpty(listEl) {
-      listEl.replaceChildren(el("li", { class: "item muted" }, [t.empty]));
-    }
+      const formatDate = (value) => {
+        if (!value) return "";
+        const date = new Date(value);
+        if (Number.isNaN(date.getTime())) return value;
+        return new Intl.DateTimeFormat("{{lang}}" === "ja" ? "ja-JP" : "en-US", {
+          year: "numeric",
+          month: "short",
+          day: "2-digit",
+        }).format(date);
+      };
 
-    try {
-      const [work, blog, art, books] = await Promise.all([
-        fetchList("work"),
-        fetchList("blog"),
-        fetchList("art"),
-        fetchList("books")
-      ]);
+      function listItem({ title, meta, url, tags, label }) {
+        const titleNode = url ? el("a", { href: url }, [title]) : document.createTextNode(title);
+        return el("li", { class: "item" }, [
+          el("h3", {}, [titleNode]),
+          meta ? el("p", { class: "meta" }, [meta]) : document.createTextNode(""),
+          tags && tags.length ? chips(tags) : document.createTextNode(""),
+          url && label
+            ? el("div", { class: "links" }, [el("a", { href: url }, [label])])
+            : document.createTextNode(""),
+        ]);
+      }
 
-      const featuredWork = work.filter(item => item.featured);
-      const workItems = (featuredWork.length ? featuredWork : work).slice(0, 3);
-      const blogItems = blog.slice(0, 3);
-      const artItems = art.slice(0, 3);
-      const bookItems = books.slice(0, 3);
+      function fillEmpty(listEl) {
+        listEl.replaceChildren(el("li", { class: "item muted" }, [t.empty]));
+      }
 
-      if (workItems.length) {
-        listWork.replaceChildren(...workItems.map(item => listItem({
-          title: item.title,
-          meta: item.summary || item.year?.toString(),
-          url: `{{base}}/work/item/?slug=${encodeURIComponent(item.slug)}`,
-          tags: item.stack,
-          label: t.read
-        })));
-      } else {
+      try {
+        const [work, blog, art, books] = await Promise.all([
+          fetchList("work"),
+          fetchList("blog"),
+          fetchList("art"),
+          fetchList("books"),
+        ]);
+
+        const featuredWork = work.filter((item) => item.featured);
+        const workItems = (featuredWork.length ? featuredWork : work).slice(0, 3);
+        const blogItems = blog.slice(0, 3);
+        const artItems = art.slice(0, 3);
+        const bookItems = books.slice(0, 3);
+
+        if (workItems.length) {
+          listWork.replaceChildren(
+            ...workItems.map((item) =>
+              listItem({
+                title: item.title,
+                meta: item.summary || item.year?.toString(),
+                url: `{{base}}/work/item/?slug=${encodeURIComponent(item.slug)}`,
+                tags: item.stack,
+                label: t.read,
+              })
+            )
+          );
+        } else {
+          fillEmpty(listWork);
+        }
+
+        if (blogItems.length) {
+          listBlog.replaceChildren(
+            ...blogItems.map((item) =>
+              listItem({
+                title: item.title,
+                meta: formatDate(item.published_at),
+                url: `{{base}}/blog/post/?slug=${encodeURIComponent(item.slug)}`,
+                tags: item.tags,
+                label: t.read,
+              })
+            )
+          );
+        } else {
+          fillEmpty(listBlog);
+        }
+
+        if (artItems.length) {
+          listArt.replaceChildren(
+            ...artItems.map((item) =>
+              listItem({
+                title: item.title,
+                meta: item.medium || (item.year ? String(item.year) : ""),
+                url: `{{base}}/art/item/?slug=${encodeURIComponent(item.slug)}`,
+                tags: item.tags,
+                label: t.view,
+              })
+            )
+          );
+        } else {
+          fillEmpty(listArt);
+        }
+
+        if (bookItems.length) {
+          listBooks.replaceChildren(
+            ...bookItems.map((item) =>
+              listItem({
+                title: item.title,
+                meta: [item.author, formatDate(item.finished_at)].filter(Boolean).join(" · "),
+                url: `{{base}}/books/`,
+                tags: item.tags,
+                label: t.more,
+              })
+            )
+          );
+        } else {
+          fillEmpty(listBooks);
+        }
+
+        if (status) status.remove();
+      } catch (error) {
+        console.warn(error);
+        if (status) status.textContent = t.loadingError;
         fillEmpty(listWork);
-      }
-
-      if (blogItems.length) {
-        listBlog.replaceChildren(...blogItems.map(item => listItem({
-          title: item.title,
-          meta: formatDate(item.published_at),
-          url: `{{base}}/blog/post/?slug=${encodeURIComponent(item.slug)}`,
-          tags: item.tags,
-          label: t.read
-        })));
-      } else {
         fillEmpty(listBlog);
-      }
-
-      if (artItems.length) {
-        listArt.replaceChildren(...artItems.map(item => listItem({
-          title: item.title,
-          meta: item.medium || (item.year ? String(item.year) : ""),
-          url: `{{base}}/art/item/?slug=${encodeURIComponent(item.slug)}`,
-          tags: item.tags,
-          label: t.view
-        })));
-      } else {
         fillEmpty(listArt);
-      }
-
-      if (bookItems.length) {
-        listBooks.replaceChildren(...bookItems.map(item => listItem({
-          title: item.title,
-          meta: [item.author, formatDate(item.finished_at)].filter(Boolean).join(" · "),
-          url: `{{base}}/books/`,
-          tags: item.tags,
-          label: t.more
-        })));
-      } else {
         fillEmpty(listBooks);
       }
-
-      if (status) status.remove();
-    } catch (error) {
-      console.warn(error);
-      if (status) status.textContent = t.loadingError;
-      fillEmpty(listWork);
-      fillEmpty(listBlog);
-      fillEmpty(listArt);
-      fillEmpty(listBooks);
-    }
-  </script>
-</body>
+    </script>
+  </body>
 </html>

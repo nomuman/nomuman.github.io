@@ -2,11 +2,11 @@
 
 ## 0) まず守るルール（ジュニア向け）
 
-* **ENがルート `/`、JAは `/ja/`**
-* **GitHub Pages は静的配信**（HTML/CSS/JSのみ） ([GitHub Docs][1])
-* Supabaseはブラウザから読むので、**RLS ON + SELECTだけ許可**が必須 ([Supabase][3])
-* `anon key` は公開前提のキー。**service_role は絶対に置かない** ([Supabase][4])
-* `hreflang` は全対応ページで相互に設定（SEO/Lighthouse対策） ([Google for Developers][5])
+- **ENがルート `/`、JAは `/ja/`**
+- **GitHub Pages は静的配信**（HTML/CSS/JSのみ） ([GitHub Docs][1])
+- Supabaseはブラウザから読むので、**RLS ON + SELECTだけ許可**が必須 ([Supabase][3])
+- `anon key` は公開前提のキー。**service_role は絶対に置かない** ([Supabase][4])
+- `hreflang` は全対応ページで相互に設定（SEO/Lighthouse対策） ([Google for Developers][5])
 
 ---
 
@@ -57,9 +57,9 @@
 
 ## 2) Supabase 側の前提（超重要）
 
-* REST API は `https://<project_ref>.supabase.co/rest/v1/` で使える ([Supabase][2])
-* ブラウザから叩くので `apikey` と（通常）`Authorization: Bearer` を付ける ([Supabase][6])
-* そして **RLS を enable、SELECT policy を using で書く** ([Supabase][3])
+- REST API は `https://<project_ref>.supabase.co/rest/v1/` で使える ([Supabase][2])
+- ブラウザから叩くので `apikey` と（通常）`Authorization: Bearer` を付ける ([Supabase][6])
+- そして **RLS を enable、SELECT policy を using で書く** ([Supabase][3])
 
 ---
 
@@ -146,20 +146,23 @@ export function el(tag, attrs = {}, children = []) {
 }
 
 export function card(title, bodyNode) {
-  return el("section", { class: "card" }, [
-    el("h2", {}, [title]),
-    bodyNode,
-  ]);
+  return el("section", { class: "card" }, [el("h2", {}, [title]), bodyNode]);
 }
 
 export function chips(items = []) {
-  return el("div", { class: "chips" }, items.map(t => el("span", {}, [t])));
+  return el(
+    "div",
+    { class: "chips" },
+    items.map((t) => el("span", {}, [t]))
+  );
 }
 
 export function linkRow(links = []) {
-  return el("div", { class: "links" }, links.map(l =>
-    el("a", { href: l.url, target: "_blank", rel: "noreferrer" }, [l.label])
-  ));
+  return el(
+    "div",
+    { class: "links" },
+    links.map((l) => el("a", { href: l.url, target: "_blank", rel: "noreferrer" }, [l.label]))
+  );
 }
 
 export async function fetchList(kind) {
@@ -194,15 +197,22 @@ export async function fetchOne(kind, slug) {
   const lang = detectLang();
   const api = supabase();
 
-  const table = kind === "work" ? "work_items"
-    : kind === "blog" ? "blog_posts"
-    : kind === "art" ? "art_items"
-    : kind === "books" ? "books"
-    : null;
+  const table =
+    kind === "work"
+      ? "work_items"
+      : kind === "blog"
+        ? "blog_posts"
+        : kind === "art"
+          ? "art_items"
+          : kind === "books"
+            ? "books"
+            : null;
 
   if (!table) throw new Error("Unknown kind");
 
-  const rows = await api.get(`${table}?select=*&lang=eq.${lang}&slug=eq.${encodeURIComponent(slug)}&limit=1`);
+  const rows = await api.get(
+    `${table}?select=*&lang=eq.${lang}&slug=eq.${encodeURIComponent(slug)}&limit=1`
+  );
   return rows[0] || null;
 }
 ```
@@ -210,107 +220,188 @@ export async function fetchOne(kind, slug) {
 ### `shared/styles.css`（Marjo風 neo-brutal 最小セット）
 
 ```css
-:root{
-  --bg:#0b0b0d;
-  --fg:#f5f5f7;
-  --muted:#b8b8c2;
-  --card:#111116;
-  --border:#f5f5f7;
-  --accent:#a3ff12;
-  --shadow: 6px 6px 0 rgba(245,245,247,.9);
+:root {
+  --bg: #0b0b0d;
+  --fg: #f5f5f7;
+  --muted: #b8b8c2;
+  --card: #111116;
+  --border: #f5f5f7;
+  --accent: #a3ff12;
+  --shadow: 6px 6px 0 rgba(245, 245, 247, 0.9);
   --max: 960px;
 }
 
-*{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--fg);
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
-  line-height:1.5;
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    "Helvetica Neue",
+    Arial;
+  line-height: 1.5;
 }
 
-a{ color:var(--fg); }
-a:focus{ outline:2px solid var(--accent); outline-offset:2px; }
-
-.topbar{
-  position:sticky; top:0; z-index:10;
-  background:rgba(11,11,13,.85);
-  backdrop-filter:saturate(140%) blur(6px);
-  border-bottom:2px solid rgba(245,245,247,.2);
-  display:flex; align-items:center; justify-content:space-between;
-  padding:12px 16px;
+a {
+  color: var(--fg);
+}
+a:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
-.brand{
-  display:inline-flex; align-items:center; justify-content:center;
-  width:40px; height:40px;
-  border:2px solid var(--border);
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(11, 11, 13, 0.85);
+  backdrop-filter: saturate(140%) blur(6px);
+  border-bottom: 2px solid rgba(245, 245, 247, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--border);
   box-shadow: var(--shadow);
-  background:var(--card);
-  text-decoration:none;
-  font-weight:900;
+  background: var(--card);
+  text-decoration: none;
+  font-weight: 900;
 }
 
-.nav{ display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
-.nav a{ text-decoration:none; opacity:.9; }
-.nav a:hover{ opacity:1; text-decoration:underline; }
+.nav {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.nav a {
+  text-decoration: none;
+  opacity: 0.9;
+}
+.nav a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
 
-.nav .cta{
-  padding:8px 10px;
-  border:2px solid var(--border);
+.nav .cta {
+  padding: 8px 10px;
+  border: 2px solid var(--border);
   box-shadow: var(--shadow);
-  background:var(--accent);
-  color:#000;
-  font-weight:900;
+  background: var(--accent);
+  color: #000;
+  font-weight: 900;
 }
 
-.wrap{ max-width:var(--max); margin:0 auto; padding:28px 16px 48px; }
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 28px 16px 48px;
+}
 
-.hero{ padding:18px 0 22px; }
-.kicker{ margin:0 0 8px; color:var(--muted); }
-h1{ margin:0 0 12px; font-size:clamp(36px, 5vw, 64px); line-height:1.05; }
-.lead{ max-width:62ch; color:var(--muted); font-size:1.1rem; }
+.hero {
+  padding: 18px 0 22px;
+}
+.kicker {
+  margin: 0 0 8px;
+  color: var(--muted);
+}
+h1 {
+  margin: 0 0 12px;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.05;
+}
+.lead {
+  max-width: 62ch;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
 
-.card{
-  margin:18px 0;
-  padding:18px;
-  border:2px solid var(--border);
-  background:var(--card);
+.card {
+  margin: 18px 0;
+  padding: 18px;
+  border: 2px solid var(--border);
+  background: var(--card);
   box-shadow: var(--shadow);
 }
-.card h2{ margin:0 0 12px; }
-
-.links{ display:flex; gap:12px; flex-wrap:wrap; margin-top:10px; }
-.links a{ border-bottom:2px solid rgba(245,245,247,.25); }
-.links a:hover{ border-bottom-color:var(--accent); }
-
-.chips{ display:flex; gap:8px; flex-wrap:wrap; }
-.chips span{
-  padding:6px 8px;
-  border:2px solid rgba(245,245,247,.35);
-  background:#0e0e13;
-  font-weight:800;
+.card h2 {
+  margin: 0 0 12px;
 }
 
-.grid2{
-  display:grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  gap:14px;
+.links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 10px;
 }
-@media (max-width:720px){ .grid2{ grid-template-columns:1fr; } }
-
-.list{ margin:0; padding:0; list-style:none; }
-.item{
-  padding:12px 0;
-  border-top:1px solid rgba(245,245,247,.2);
+.links a {
+  border-bottom: 2px solid rgba(245, 245, 247, 0.25);
 }
-.item:first-child{ border-top:0; }
+.links a:hover {
+  border-bottom-color: var(--accent);
+}
 
-.muted{ color:var(--muted); }
+.chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.chips span {
+  padding: 6px 8px;
+  border: 2px solid rgba(245, 245, 247, 0.35);
+  background: #0e0e13;
+  font-weight: 800;
+}
 
-.footer{ margin-top:22px; color:var(--muted); }
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+@media (max-width: 720px) {
+  .grid2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.item {
+  padding: 12px 0;
+  border-top: 1px solid rgba(245, 245, 247, 0.2);
+}
+.item:first-child {
+  border-top: 0;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.footer {
+  margin-top: 22px;
+  color: var(--muted);
+}
 ```
 
 ---
@@ -325,78 +416,82 @@ h1{ margin:0 0 12px; font-size:clamp(36px, 5vw, 64px); line-height:1.05; }
 ```html
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Natsume</title>
-  <meta name="description" content="Portfolio, blog, art, and books." />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Natsume</title>
+    <meta name="description" content="Portfolio, blog, art, and books." />
 
-  <link rel="alternate" hreflang="en" href="https://nomuman.github.io/" />
-  <link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/" />
+    <link rel="alternate" hreflang="en" href="https://nomuman.github.io/" />
+    <link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/" />
 
-  <link rel="stylesheet" href="/shared/styles.css" />
-  <script src="/shared/config.js"></script>
-</head>
-<body>
-  <header class="topbar">
-    <a class="brand" href="/" aria-label="Home">N</a>
-    <nav class="nav">
-      <a href="/work/">Work</a>
-      <a href="/blog/">Blog</a>
-      <a href="/art/">Art</a>
-      <a href="/books/">Books</a>
-      <a href="/about/">About</a>
-      <a class="cta" href="mailto:senri.gotoda@gmail.com">Get in touch</a>
-      <a data-lang-toggle href="/ja/">JA</a>
-    </nav>
-  </header>
+    <link rel="stylesheet" href="/shared/styles.css" />
+    <script src="/shared/config.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Home">N</a>
+      <nav class="nav">
+        <a href="/work/">Work</a>
+        <a href="/blog/">Blog</a>
+        <a href="/art/">Art</a>
+        <a href="/books/">Books</a>
+        <a href="/about/">About</a>
+        <a class="cta" href="mailto:senri.gotoda@gmail.com">Get in touch</a>
+        <a data-lang-toggle href="/ja/">JA</a>
+      </nav>
+    </header>
 
-  <main class="wrap">
-    <section class="hero">
-      <p class="kicker">Hi there!</p>
-      <h1>I’m Natsume.</h1>
-      <p class="lead">Software Engineer in Japan. I build mobile products and love lightweight craft.</p>
+    <main class="wrap">
+      <section class="hero">
+        <p class="kicker">Hi there!</p>
+        <h1>I’m Natsume.</h1>
+        <p class="lead">
+          Software Engineer in Japan. I build mobile products and love lightweight craft.
+        </p>
 
-      <div class="links">
-        <a href="mailto:senri.gotoda@gmail.com">Email</a>
-        <a href="https://x.com/nomuman_" target="_blank" rel="noreferrer">X</a>
-        <a href="https://github.com/nomuman" target="_blank" rel="noreferrer">GitHub</a>
-      </div>
-    </section>
+        <div class="links">
+          <a href="mailto:senri.gotoda@gmail.com">Email</a>
+          <a href="https://x.com/nomuman_" target="_blank" rel="noreferrer">X</a>
+          <a href="https://github.com/nomuman" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </section>
 
-    <section class="card">
-      <h2>Featured</h2>
-      <div id="featured" class="grid2"></div>
-      <p class="muted">Pulling latest items from Supabase.</p>
-    </section>
+      <section class="card">
+        <h2>Featured</h2>
+        <div id="featured" class="grid2"></div>
+        <p class="muted">Pulling latest items from Supabase.</p>
+      </section>
 
-    <footer class="footer">
-      <small>© <span data-year></span> Natsume</small>
-    </footer>
-  </main>
+      <footer class="footer">
+        <small>© <span data-year></span> Natsume</small>
+      </footer>
+    </main>
 
-  <script type="module">
-    import { mountLangToggle, setYear, fetchList, el, chips } from "/shared/app.js";
+    <script type="module">
+      import { mountLangToggle, setYear, fetchList, el, chips } from "/shared/app.js";
 
-    mountLangToggle();
-    setYear();
+      mountLangToggle();
+      setYear();
 
-    const featured = document.getElementById("featured");
-    const work = await fetchList("work");
-    const items = work.filter(x => x.featured).slice(0, 3);
+      const featured = document.getElementById("featured");
+      const work = await fetchList("work");
+      const items = work.filter((x) => x.featured).slice(0, 3);
 
-    featured.replaceChildren(
-      ...items.map(x => el("div", { class: "card" }, [
-        el("h2", {}, [x.title]),
-        el("p", { class: "muted" }, [x.summary || ""]),
-        chips(x.stack || []),
-        el("div", { class: "links" }, [
-          el("a", { href: `/work/item/?slug=${encodeURIComponent(x.slug)}` }, ["Read"])
-        ])
-      ]))
-    );
-  </script>
-</body>
+      featured.replaceChildren(
+        ...items.map((x) =>
+          el("div", { class: "card" }, [
+            el("h2", {}, [x.title]),
+            el("p", { class: "muted" }, [x.summary || ""]),
+            chips(x.stack || []),
+            el("div", { class: "links" }, [
+              el("a", { href: `/work/item/?slug=${encodeURIComponent(x.slug)}` }, ["Read"]),
+            ]),
+          ])
+        )
+      );
+    </script>
+  </body>
 </html>
 ```
 
@@ -405,75 +500,78 @@ h1{ margin:0 0 12px; font-size:clamp(36px, 5vw, 64px); line-height:1.05; }
 ```html
 <!doctype html>
 <html lang="ja">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Natsume</title>
-  <meta name="description" content="ポートフォリオ、ブログ、アート、読書ログ。" />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Natsume</title>
+    <meta name="description" content="ポートフォリオ、ブログ、アート、読書ログ。" />
 
-  <link rel="alternate" hreflang="en" href="https://nomuman.github.io/" />
-  <link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/" />
+    <link rel="alternate" hreflang="en" href="https://nomuman.github.io/" />
+    <link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/" />
 
-  <link rel="stylesheet" href="/shared/styles.css" />
-  <script src="/shared/config.js"></script>
-</head>
-<body>
-  <header class="topbar">
-    <a class="brand" href="/ja/" aria-label="Home">N</a>
-    <nav class="nav">
-      <a href="/ja/work/">Work</a>
-      <a href="/ja/blog/">Blog</a>
-      <a href="/ja/art/">Art</a>
-      <a href="/ja/books/">Books</a>
-      <a href="/ja/about/">About</a>
-      <a class="cta" href="mailto:senri.gotoda@gmail.com">連絡する</a>
-      <a data-lang-toggle href="/">EN</a>
-    </nav>
-  </header>
+    <link rel="stylesheet" href="/shared/styles.css" />
+    <script src="/shared/config.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/ja/" aria-label="Home">N</a>
+      <nav class="nav">
+        <a href="/ja/work/">Work</a>
+        <a href="/ja/blog/">Blog</a>
+        <a href="/ja/art/">Art</a>
+        <a href="/ja/books/">Books</a>
+        <a href="/ja/about/">About</a>
+        <a class="cta" href="mailto:senri.gotoda@gmail.com">連絡する</a>
+        <a data-lang-toggle href="/">EN</a>
+      </nav>
+    </header>
 
-  <main class="wrap">
-    <section class="hero">
-      <p class="kicker">やあ！</p>
-      <h1>Natsumeです。</h1>
-      <p class="lead">日本でソフトウェアを作ってる。軽量で長く育つプロダクトが好き。</p>
+    <main class="wrap">
+      <section class="hero">
+        <p class="kicker">やあ！</p>
+        <h1>Natsumeです。</h1>
+        <p class="lead">日本でソフトウェアを作ってる。軽量で長く育つプロダクトが好き。</p>
 
-      <div class="links">
-        <a href="mailto:senri.gotoda@gmail.com">Email</a>
-        <a href="https://x.com/nomuman_" target="_blank" rel="noreferrer">X</a>
-        <a href="https://github.com/nomuman" target="_blank" rel="noreferrer">GitHub</a>
-      </div>
-    </section>
+        <div class="links">
+          <a href="mailto:senri.gotoda@gmail.com">Email</a>
+          <a href="https://x.com/nomuman_" target="_blank" rel="noreferrer">X</a>
+          <a href="https://github.com/nomuman" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </section>
 
-    <section class="card">
-      <h2>注目</h2>
-      <div id="featured" class="grid2"></div>
-    </section>
+      <section class="card">
+        <h2>注目</h2>
+        <div id="featured" class="grid2"></div>
+      </section>
 
-    <footer class="footer">
-      <small>© <span data-year></span> Natsume</small>
-    </footer>
-  </main>
+      <footer class="footer">
+        <small>© <span data-year></span> Natsume</small>
+      </footer>
+    </main>
 
-  <script type="module">
-    import { mountLangToggle, setYear, fetchList, el, chips } from "/shared/app.js";
-    mountLangToggle(); setYear();
+    <script type="module">
+      import { mountLangToggle, setYear, fetchList, el, chips } from "/shared/app.js";
+      mountLangToggle();
+      setYear();
 
-    const featured = document.getElementById("featured");
-    const work = await fetchList("work");
-    const items = work.filter(x => x.featured).slice(0, 3);
+      const featured = document.getElementById("featured");
+      const work = await fetchList("work");
+      const items = work.filter((x) => x.featured).slice(0, 3);
 
-    featured.replaceChildren(
-      ...items.map(x => el("div", { class: "card" }, [
-        el("h2", {}, [x.title]),
-        el("p", { class: "muted" }, [x.summary || ""]),
-        chips(x.stack || []),
-        el("div", { class: "links" }, [
-          el("a", { href: `/ja/work/item/?slug=${encodeURIComponent(x.slug)}` }, ["読む"])
-        ])
-      ]))
-    );
-  </script>
-</body>
+      featured.replaceChildren(
+        ...items.map((x) =>
+          el("div", { class: "card" }, [
+            el("h2", {}, [x.title]),
+            el("p", { class: "muted" }, [x.summary || ""]),
+            chips(x.stack || []),
+            el("div", { class: "links" }, [
+              el("a", { href: `/ja/work/item/?slug=${encodeURIComponent(x.slug)}` }, ["読む"]),
+            ]),
+          ])
+        )
+      );
+    </script>
+  </body>
 </html>
 ```
 
@@ -488,52 +586,55 @@ h1{ margin:0 0 12px; font-size:clamp(36px, 5vw, 64px); line-height:1.05; }
 ```html
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Work — Natsume</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Work — Natsume</title>
 
-  <link rel="alternate" hreflang="en" href="https://nomuman.github.io/work/" />
-  <link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/work/" />
+    <link rel="alternate" hreflang="en" href="https://nomuman.github.io/work/" />
+    <link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/work/" />
 
-  <link rel="stylesheet" href="/shared/styles.css" />
-  <script src="/shared/config.js"></script>
-</head>
-<body>
-  <header class="topbar">
-    <a class="brand" href="/">N</a>
-    <nav class="nav">
-      <a href="/work/">Work</a><a href="/blog/">Blog</a><a href="/art/">Art</a><a href="/books/">Books</a><a href="/about/">About</a>
-      <a data-lang-toggle href="/ja/work/">JA</a>
-    </nav>
-  </header>
+    <link rel="stylesheet" href="/shared/styles.css" />
+    <script src="/shared/config.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/">N</a>
+      <nav class="nav">
+        <a href="/work/">Work</a><a href="/blog/">Blog</a><a href="/art/">Art</a
+        ><a href="/books/">Books</a><a href="/about/">About</a>
+        <a data-lang-toggle href="/ja/work/">JA</a>
+      </nav>
+    </header>
 
-  <main class="wrap">
-    <section class="card">
-      <h2>Work</h2>
-      <ul id="list" class="list"></ul>
-    </section>
-  </main>
+    <main class="wrap">
+      <section class="card">
+        <h2>Work</h2>
+        <ul id="list" class="list"></ul>
+      </section>
+    </main>
 
-  <script type="module">
-    import { mountLangToggle, fetchList, el, chips } from "/shared/app.js";
-    mountLangToggle();
+    <script type="module">
+      import { mountLangToggle, fetchList, el, chips } from "/shared/app.js";
+      mountLangToggle();
 
-    const ul = document.getElementById("list");
-    const items = await fetchList("work");
+      const ul = document.getElementById("list");
+      const items = await fetchList("work");
 
-    ul.replaceChildren(...items.map(x =>
-      el("li", { class: "item" }, [
-        el("h3", {}, [x.title]),
-        el("p", { class: "muted" }, [x.summary || ""]),
-        chips(x.stack || []),
-        el("div", { class: "links" }, [
-          el("a", { href: `/work/item/?slug=${encodeURIComponent(x.slug)}` }, ["Read"])
-        ])
-      ])
-    ));
-  </script>
-</body>
+      ul.replaceChildren(
+        ...items.map((x) =>
+          el("li", { class: "item" }, [
+            el("h3", {}, [x.title]),
+            el("p", { class: "muted" }, [x.summary || ""]),
+            chips(x.stack || []),
+            el("div", { class: "links" }, [
+              el("a", { href: `/work/item/?slug=${encodeURIComponent(x.slug)}` }, ["Read"]),
+            ]),
+          ])
+        )
+      );
+    </script>
+  </body>
 </html>
 ```
 
@@ -542,75 +643,75 @@ h1{ margin:0 0 12px; font-size:clamp(36px, 5vw, 64px); line-height:1.05; }
 ```html
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Work — Natsume</title>
-  <link rel="stylesheet" href="/shared/styles.css" />
-  <script src="/shared/config.js"></script>
-</head>
-<body>
-  <header class="topbar">
-    <a class="brand" href="/">N</a>
-    <nav class="nav">
-      <a href="/work/">Back</a>
-      <a data-lang-toggle href="/ja/work/item/">JA</a>
-    </nav>
-  </header>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Work — Natsume</title>
+    <link rel="stylesheet" href="/shared/styles.css" />
+    <script src="/shared/config.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/">N</a>
+      <nav class="nav">
+        <a href="/work/">Back</a>
+        <a data-lang-toggle href="/ja/work/item/">JA</a>
+      </nav>
+    </header>
 
-  <main class="wrap">
-    <section class="card">
-      <h2 id="title">Loading…</h2>
-      <p id="summary" class="muted"></p>
-      <div id="stack" class="chips"></div>
-      <div id="links" class="links"></div>
-      <hr style="border:0;border-top:1px solid rgba(245,245,247,.2);margin:16px 0;">
-      <div id="body"></div>
-    </section>
-  </main>
+    <main class="wrap">
+      <section class="card">
+        <h2 id="title">Loading…</h2>
+        <p id="summary" class="muted"></p>
+        <div id="stack" class="chips"></div>
+        <div id="links" class="links"></div>
+        <hr style="border:0;border-top:1px solid rgba(245,245,247,.2);margin:16px 0;" />
+        <div id="body"></div>
+      </section>
+    </main>
 
-  <script type="module">
-    import { mountLangToggle, qs, fetchOne, chips, linkRow } from "/shared/app.js";
-    mountLangToggle();
+    <script type="module">
+      import { mountLangToggle, qs, fetchOne, chips, linkRow } from "/shared/app.js";
+      mountLangToggle();
 
-    const slug = qs("slug");
-    if (!slug) {
-      document.getElementById("title").textContent = "Missing slug";
-      throw new Error("Missing slug");
-    }
+      const slug = qs("slug");
+      if (!slug) {
+        document.getElementById("title").textContent = "Missing slug";
+        throw new Error("Missing slug");
+      }
 
-    const item = await fetchOne("work", slug);
-    if (!item) {
-      document.getElementById("title").textContent = "Not found";
-      throw new Error("Not found");
-    }
+      const item = await fetchOne("work", slug);
+      if (!item) {
+        document.getElementById("title").textContent = "Not found";
+        throw new Error("Not found");
+      }
 
-    document.title = `${item.title} — Work`;
-    document.getElementById("title").textContent = item.title;
-    document.getElementById("summary").textContent = item.summary || "";
+      document.title = `${item.title} — Work`;
+      document.getElementById("title").textContent = item.title;
+      document.getElementById("summary").textContent = item.summary || "";
 
-    document.getElementById("stack").replaceWith(chips(item.stack || []));
-    document.getElementById("links").replaceWith(linkRow(item.links || []));
+      document.getElementById("stack").replaceWith(chips(item.stack || []));
+      document.getElementById("links").replaceWith(linkRow(item.links || []));
 
-    // body_html は “自分が管理するデータのみ” を前提（公開投稿は作らない）
-    document.getElementById("body").innerHTML = item.body_html || "";
-  </script>
-</body>
+      // body_html は “自分が管理するデータのみ” を前提（公開投稿は作らない）
+      document.getElementById("body").innerHTML = item.body_html || "";
+    </script>
+  </body>
 </html>
 ```
 
 ### 5.3 JA版（`/ja/work/...`）は EN版をコピーしてリンクだけ `/ja/` に変える
 
-* 一覧：`/ja/work/index.html` の `fetchList("work")` は自動で `lang=ja` になる（`detectLang()`）
-* 詳細：`/ja/work/item/index.html` で `Back` を `/ja/work/` にするだけ
+- 一覧：`/ja/work/index.html` の `fetchList("work")` は自動で `lang=ja` になる（`detectLang()`）
+- 詳細：`/ja/work/item/index.html` で `Back` を `/ja/work/` にするだけ
 
 ---
 
 ## 6) Blog / Art / Books も同じパターンで作る（最短）
 
-* Blog一覧：`fetchList("blog")` → `/blog/post/?slug=...`
-* Art一覧：`fetchList("art")` → `/art/item/?slug=...`
-* Books一覧：`fetchList("books")`（Books詳細は最初は不要でもOK）
+- Blog一覧：`fetchList("blog")` → `/blog/post/?slug=...`
+- Art一覧：`fetchList("art")` → `/art/item/?slug=...`
+- Books一覧：`fetchList("books")`（Books詳細は最初は不要でもOK）
 
 > Supabase REST はテーブルから自動でAPIが生えるから、同じテンプレで増やせる ([Supabase][2])
 
@@ -625,21 +726,21 @@ GitHub Pages はカスタム 404 を置けるので、ルートと `/ja/` 両方
 ```html
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>404 — Not Found</title>
-  <link rel="stylesheet" href="/shared/styles.css" />
-</head>
-<body>
-  <main class="wrap">
-    <section class="card">
-      <h2>404</h2>
-      <p class="muted">Page not found.</p>
-      <div class="links"><a href="/">Go home</a></div>
-    </section>
-  </main>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>404 — Not Found</title>
+    <link rel="stylesheet" href="/shared/styles.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <section class="card">
+        <h2>404</h2>
+        <p class="muted">Page not found.</p>
+        <div class="links"><a href="/">Go home</a></div>
+      </section>
+    </main>
+  </body>
 </html>
 ```
 
@@ -666,12 +767,11 @@ using (published = true);
 
 ## 9) ジュニア向けチェックリスト（Doneの定義）
 
-* [ ] `/` と `/ja/` が表示され、言語切替が動く
-* [ ] `/work/` が Supabase から一覧取得できる
-* [ ] `/work/item/?slug=...` が表示できる
-* [ ] RLSが有効で、`published=false` は取得できない ([Supabase][3])
-* [ ] `hreflang` をEN/JAの各対応ページに設定（Googleガイドに沿う） ([Google for Developers][5])
-
+- [ ] `/` と `/ja/` が表示され、言語切替が動く
+- [ ] `/work/` が Supabase から一覧取得できる
+- [ ] `/work/item/?slug=...` が表示できる
+- [ ] RLSが有効で、`published=false` は取得できない ([Supabase][3])
+- [ ] `hreflang` をEN/JAの各対応ページに設定（Googleガイドに沿う） ([Google for Developers][5])
 
 [1]: https://docs.github.com/en/pages/quickstart?utm_source=chatgpt.com "Quickstart for GitHub Pages"
 [2]: https://supabase.com/docs/guides/api?utm_source=chatgpt.com "REST API | Supabase Docs"

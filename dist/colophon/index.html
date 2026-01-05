@@ -1,33 +1,33 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Colophon — nomuman</title>
-  <meta name="description" content="How this site is built and why." />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Colophon — nomuman</title>
+    <meta name="description" content="How this site is built and why." />
 
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Colophon — nomuman" />
-  <meta property="og:description" content="How this site is built and why." />
-  <meta property="og:url" content="https://nomuman.github.io/colophon/" />
-  <meta property="og:image" content="https://nomuman.github.io/assets/ogp.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Colophon — nomuman" />
-  <meta name="twitter:description" content="How this site is built and why." />
-  <meta name="twitter:image" content="https://nomuman.github.io/assets/ogp.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Colophon — nomuman" />
+    <meta property="og:description" content="How this site is built and why." />
+    <meta property="og:url" content="https://nomuman.github.io/colophon/" />
+    <meta property="og:image" content="https://nomuman.github.io/assets/ogp.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Colophon — nomuman" />
+    <meta name="twitter:description" content="How this site is built and why." />
+    <meta name="twitter:image" content="https://nomuman.github.io/assets/ogp.png" />
 
-  <link rel="alternate" hreflang="en" href="https://nomuman.github.io/colophon/" />
-  <link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/colophon/" />
+    <link rel="alternate" hreflang="en" href="https://nomuman.github.io/colophon/" />
+    <link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/colophon/" />
 
-  <link rel="icon" href="/assets/favicon.png" type="image/png" />
-  <link rel="stylesheet" href="/shared/styles.css" />
-</head>
-<body>
-  <header class="topbar">
-    <a class="brand" href="/" aria-label="Home">
-      <img src="/assets/favicon.png" alt="Home" width="32" height="32" />
-    </a>
-    <nav class="nav nav--main" aria-label="Primary">
+    <link rel="icon" href="/assets/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="/shared/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Home">
+        <img src="/assets/favicon.png" alt="Home" width="32" height="32" />
+      </a>
+      <nav class="nav nav--main" aria-label="Primary">
   <!-- TODO: Work/Art/Books will be re-enabled later -->
   <!-- <a href="/work/">Work</a> -->
   <a href="/blog/">Blog</a>
@@ -43,38 +43,38 @@
   </div>
 </nav>
 
-  </header>
+    </header>
 
-  <main class="wrap">
-    <section class="card" data-stamp="Colophon">
-      <h1>Colophon</h1>
-      <p class="muted">A short note on the tools and principles behind this site.</p>
-      <ul class="list">
-        <li class="item">
-          <strong>Stack</strong>
-          <p class="muted">Pure HTML, CSS, and vanilla JS—no frameworks.</p>
-        </li>
-        <li class="item">
-          <strong>Hosting</strong>
-          <p class="muted">Hosted on GitHub Pages.</p>
-        </li>
-        <li class="item">
-          <strong>Data</strong>
-          <p class="muted">Supabase (Postgres + REST). Public reads only, gated by RLS.</p>
-        </li>
-        <li class="item">
-          <strong>Design</strong>
-          <p class="muted">Neo-brutal layout with bold borders, red stamp accents, and abstract geometry plus animal/book motifs.</p>
-        </li>
-      </ul>
-    </section>
-  </main>
+    <main class="wrap">
+      <section class="card" data-stamp="Colophon">
+        <h1>Colophon</h1>
+        <p class="muted">A short note on the tools and principles behind this site.</p>
+        <ul class="list">
+          <li class="item">
+            <strong>Stack</strong>
+            <p class="muted">Pure HTML, CSS, and vanilla JS—no frameworks.</p>
+          </li>
+          <li class="item">
+            <strong>Hosting</strong>
+            <p class="muted">Hosted on GitHub Pages.</p>
+          </li>
+          <li class="item">
+            <strong>Data</strong>
+            <p class="muted">Supabase (Postgres + REST). Public reads only, gated by RLS.</p>
+          </li>
+          <li class="item">
+            <strong>Design</strong>
+            <p class="muted">Neo-brutal layout with bold borders, red stamp accents, and abstract geometry plus animal/book motifs.</p>
+          </li>
+        </ul>
+      </section>
+    </main>
 
-  <script type="module">
-    import { mountLangToggle, mountThemeToggle, mountTopbar } from "/shared/app.js";
-    mountLangToggle();
-    mountThemeToggle();
-    mountTopbar();
-  </script>
-</body>
+    <script type="module">
+      import { mountLangToggle, mountThemeToggle, mountTopbar } from "/shared/app.js";
+      mountLangToggle();
+      mountThemeToggle();
+      mountTopbar();
+    </script>
+  </body>
 </html>

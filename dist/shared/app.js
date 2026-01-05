@@ -59,8 +59,7 @@ export function mountThemeToggle() {
   };
 
   const stored = getStoredTheme();
-  const initial =
-    stored || (media && media.matches ? "light" : "dark");
+  const initial = stored || (media && media.matches ? "light" : "dark");
   applyTheme(initial);
 
   buttons.forEach((btn) => {
@@ -140,8 +139,7 @@ export function el(tag, attrs = {}, children = []) {
   const node = document.createElement(tag);
   for (const [k, v] of Object.entries(attrs)) {
     if (k === "class") node.className = v;
-    else if (k.startsWith("on") && typeof v === "function")
-      node.addEventListener(k.slice(2), v);
+    else if (k.startsWith("on") && typeof v === "function") node.addEventListener(k.slice(2), v);
     else node.setAttribute(k, String(v));
   }
   for (const c of children) node.append(c);
@@ -164,9 +162,7 @@ export function linkRow(links = []) {
   return el(
     "div",
     { class: "links" },
-    links.map((l) =>
-      el("a", { href: l.url, target: "_blank", rel: "noreferrer" }, [l.label])
-    )
+    links.map((l) => el("a", { href: l.url, target: "_blank", rel: "noreferrer" }, [l.label]))
   );
 }
 
@@ -214,19 +210,17 @@ export async function fetchOne(kind, slug) {
     kind === "work"
       ? "work_items"
       : kind === "blog"
-      ? "blog_posts"
-      : kind === "art"
-      ? "art_items"
-      : kind === "books"
-      ? "books"
-      : null;
+        ? "blog_posts"
+        : kind === "art"
+          ? "art_items"
+          : kind === "books"
+            ? "books"
+            : null;
 
   if (!table) throw new Error("Unknown kind");
 
   const rows = await api.get(
-    `${table}?select=*&lang=eq.${lang}&slug=eq.${encodeURIComponent(
-      slug
-    )}&limit=1`
+    `${table}?select=*&lang=eq.${lang}&slug=eq.${encodeURIComponent(slug)}&limit=1`
   );
   return rows[0] || null;
 }

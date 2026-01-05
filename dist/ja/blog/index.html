@@ -1,34 +1,34 @@
 <!doctype html>
 <html lang="ja">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Writing — nomuman</title>
-  <meta name="description" content="執筆、外部掲載、登壇／デモ" />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Writing — nomuman</title>
+    <meta name="description" content="執筆、外部掲載、登壇／デモ" />
 
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Writing — nomuman" />
-  <meta property="og:description" content="執筆、外部掲載、登壇／デモ" />
-  <meta property="og:url" content="https://nomuman.github.io/ja/blog/" />
-  <meta property="og:image" content="https://nomuman.github.io/assets/ogp.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Writing — nomuman" />
-  <meta name="twitter:description" content="執筆、外部掲載、登壇／デモ" />
-  <meta name="twitter:image" content="https://nomuman.github.io/assets/ogp.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Writing — nomuman" />
+    <meta property="og:description" content="執筆、外部掲載、登壇／デモ" />
+    <meta property="og:url" content="https://nomuman.github.io/ja/blog/" />
+    <meta property="og:image" content="https://nomuman.github.io/assets/ogp.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Writing — nomuman" />
+    <meta name="twitter:description" content="執筆、外部掲載、登壇／デモ" />
+    <meta name="twitter:image" content="https://nomuman.github.io/assets/ogp.png" />
 
-  <link rel="alternate" hreflang="en" href="https://nomuman.github.io/blog/" />
-  <link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/blog/" />
+    <link rel="alternate" hreflang="en" href="https://nomuman.github.io/blog/" />
+    <link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/blog/" />
 
-  <link rel="icon" href="/assets/favicon.png" type="image/png" />
-  <link rel="stylesheet" href="/shared/styles.css" />
-  <script src="/shared/config.js"></script>
-</head>
-<body>
-  <header class="topbar">
-    <a class="brand" href="/ja/" aria-label="Home">
-      <img src="/assets/favicon.png" alt="Home" width="32" height="32" />
-    </a>
-    <nav class="nav nav--main" aria-label="Primary">
+    <link rel="icon" href="/assets/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="/shared/styles.css" />
+    <script src="/shared/config.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/ja/" aria-label="Home">
+        <img src="/assets/favicon.png" alt="Home" width="32" height="32" />
+      </a>
+      <nav class="nav nav--main" aria-label="Primary">
   <!-- TODO: Work/Art/Books will be re-enabled later -->
   <!-- <a href="/ja/work/">Work</a> -->
   <a href="/ja/blog/">Blog</a>
@@ -44,100 +44,121 @@
   </div>
 </nav>
 
-  </header>
+    </header>
 
-  <main class="wrap">
-    <section class="card" data-stamp="Writing">
-      <h1>Writing</h1>
-      <p class="muted">執筆、外部掲載、登壇／デモをまとめています</p>
+    <main class="wrap">
+      <section class="card" data-stamp="Writing">
+        <h1>Writing</h1>
+        <p class="muted">執筆、外部掲載、登壇／デモをまとめています</p>
 
-      <h2 class="section-title">ブログ</h2>
-      <ul id="post-list" class="list"></ul>
+        <h2 class="section-title">ブログ</h2>
+        <ul id="post-list" class="list"></ul>
 
-      <h2 class="section-title">文章</h2>
-      <ul id="writing-list" class="list"></ul>
+        <h2 class="section-title">文章</h2>
+        <ul id="writing-list" class="list"></ul>
 
-      <h2 class="section-title">外部掲載</h2>
-      <ul id="featured-list" class="list"></ul>
+        <h2 class="section-title">外部掲載</h2>
+        <ul id="featured-list" class="list"></ul>
 
-      <h2 class="section-title">登壇 / デモ</h2>
-      <ul id="talks-list" class="list"></ul>
-    </section>
-  </main>
+        <h2 class="section-title">登壇 / デモ</h2>
+        <ul id="talks-list" class="list"></ul>
+      </section>
+    </main>
 
-  <script type="module">
-    import { mountLangToggle, mountThemeToggle, mountTopbar, fetchList, fetchWriting, el, chips } from "/shared/app.js";
-    mountLangToggle();
-    mountThemeToggle();
-    mountTopbar();
+    <script type="module">
+      import {
+        mountLangToggle,
+        mountThemeToggle,
+        mountTopbar,
+        fetchList,
+        fetchWriting,
+        el,
+        chips,
+      } from "/shared/app.js";
+      mountLangToggle();
+      mountThemeToggle();
+      mountTopbar();
 
-    const locale = "ja" === "ja" ? "ja-JP" : "en-US";
-    const formatDate = (value) => {
-      if (!value) return "";
-      const date = new Date(value);
-      if (Number.isNaN(date.getTime())) return value;
-      return new Intl.DateTimeFormat(locale, { year: "numeric", month: "short", day: "2-digit" }).format(date);
-    };
+      const locale = "ja" === "ja" ? "ja-JP" : "en-US";
+      const formatDate = (value) => {
+        if (!value) return "";
+        const date = new Date(value);
+        if (Number.isNaN(date.getTime())) return value;
+        return new Intl.DateTimeFormat(locale, {
+          year: "numeric",
+          month: "short",
+          day: "2-digit",
+        }).format(date);
+      };
 
-    const buildMeta = (item, fields) => {
-      const parts = fields.map((key) => item[key]).filter(Boolean);
-      const date = formatDate(item.published_at);
-      if (date) parts.push(date);
-      return parts.join(" · ");
-    };
+      const buildMeta = (item, fields) => {
+        const parts = fields.map((key) => item[key]).filter(Boolean);
+        const date = formatDate(item.published_at);
+        if (date) parts.push(date);
+        return parts.join(" · ");
+      };
 
-    const withBadge = (titleNode, item) => {
-      if (item.content_lang === "ja") {
-        return el("span", {}, [
-          titleNode,
-          el("span", { class: "badge" }, ["JA"])
-        ]);
-      }
-      return titleNode;
-    };
+      const withBadge = (titleNode, item) => {
+        if (item.content_lang === "ja") {
+          return el("span", {}, [titleNode, el("span", { class: "badge" }, ["JA"])]);
+        }
+        return titleNode;
+      };
 
-    const renderExternal = (listEl, items, metaFields) => {
-      listEl.replaceChildren(...items.map((item) => {
-        const meta = buildMeta(item, metaFields);
-        return el("li", { class: "item" }, [
-          el("h3", {}, [
-            withBadge(
-              el("a", { href: item.url, target: "_blank", rel: "noopener noreferrer" }, [item.title]),
-              item
-            )
-          ]),
-          meta ? el("p", { class: "meta" }, [meta]) : document.createTextNode(""),
-          item.summary ? el("p", { class: "muted" }, [item.summary]) : document.createTextNode(""),
-          item.tags && item.tags.length ? chips(item.tags) : document.createTextNode("")
-        ]);
-      }));
-    };
+      const renderExternal = (listEl, items, metaFields) => {
+        listEl.replaceChildren(
+          ...items.map((item) => {
+            const meta = buildMeta(item, metaFields);
+            return el("li", { class: "item" }, [
+              el("h3", {}, [
+                withBadge(
+                  el("a", { href: item.url, target: "_blank", rel: "noopener noreferrer" }, [
+                    item.title,
+                  ]),
+                  item
+                ),
+              ]),
+              meta ? el("p", { class: "meta" }, [meta]) : document.createTextNode(""),
+              item.summary
+                ? el("p", { class: "muted" }, [item.summary])
+                : document.createTextNode(""),
+              item.tags && item.tags.length ? chips(item.tags) : document.createTextNode(""),
+            ]);
+          })
+        );
+      };
 
-    const renderPosts = (listEl, posts) => {
-      listEl.replaceChildren(...posts.map((post) =>
-        el("li", { class: "item" }, [
-          el("h3", {}, [post.title]),
-          el("p", { class: "meta" }, [formatDate(post.published_at)]),
-          post.summary ? el("p", { class: "muted" }, [post.summary]) : document.createTextNode(""),
-          chips(post.tags || []),
-          el("div", { class: "links" }, [
-            el("a", { href: `/ja/blog/post/?slug=${encodeURIComponent(post.slug)}` }, ["読む"])
-          ])
-        ])
-      ));
-    };
+      const renderPosts = (listEl, posts) => {
+        listEl.replaceChildren(
+          ...posts.map((post) =>
+            el("li", { class: "item" }, [
+              el("h3", {}, [post.title]),
+              el("p", { class: "meta" }, [formatDate(post.published_at)]),
+              post.summary
+                ? el("p", { class: "muted" }, [post.summary])
+                : document.createTextNode(""),
+              chips(post.tags || []),
+              el("div", { class: "links" }, [
+                el("a", { href: `/ja/blog/post/?slug=${encodeURIComponent(post.slug)}` }, [
+                  "読む",
+                ]),
+              ]),
+            ])
+          )
+        );
+      };
 
-    const [posts, writing, featured, talks] = await Promise.all([
-      fetchList("blog"),
-      fetchWriting("writing"),
-      fetchWriting("featured"),
-      fetchWriting("talk")
-    ]);
+      const [posts, writing, featured, talks] = await Promise.all([
+        fetchList("blog"),
+        fetchWriting("writing"),
+        fetchWriting("featured"),
+        fetchWriting("talk"),
+      ]);
 
-    renderPosts(document.getElementById("post-list"), posts);
-    renderExternal(document.getElementById("writing-list"), writing, ["outlet"]);
-    renderExternal(document.getElementById("featured-list"), featured, ["outlet", "type"]);
-    renderExternal(document.getElementById("talks-list"), talks, ["outlet", "type", "role"]);
-  </script>
-</body>
+      renderPosts(document.getElementById("post-list"), posts);
+      renderExternal(document.getElementById("writing-list"), writing, ["outlet"]);
+      renderExternal(document.getElementById("featured-list"), featured, ["outlet", "type"]);
+      renderExternal(document.getElementById("talks-list"), talks, ["outlet", "type", "role"]);
+    </script>
+  </body>
 </html>

@@ -1,128 +1,149 @@
 <!doctype html>
 <html lang="{{lang}}">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>{{t:blogHub.meta.title}}</title>
-  <meta name="description" content="{{t:blogHub.meta.description}}" />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{{t:blogHub.meta.title}}</title>
+    <meta name="description" content="{{t:blogHub.meta.description}}" />
 
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="{{t:blogHub.meta.title}}" />
-  <meta property="og:description" content="{{t:blogHub.meta.description}}" />
-  <meta property="og:url" content="{{ogUrl}}" />
-  <meta property="og:image" content="{{ogImage}}" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="{{t:blogHub.meta.title}}" />
-  <meta name="twitter:description" content="{{t:blogHub.meta.description}}" />
-  <meta name="twitter:image" content="{{ogImage}}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{t:blogHub.meta.title}}" />
+    <meta property="og:description" content="{{t:blogHub.meta.description}}" />
+    <meta property="og:url" content="{{ogUrl}}" />
+    <meta property="og:image" content="{{ogImage}}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{t:blogHub.meta.title}}" />
+    <meta name="twitter:description" content="{{t:blogHub.meta.description}}" />
+    <meta name="twitter:image" content="{{ogImage}}" />
 
-  <link rel="alternate" hreflang="en" href="{{hrefEn}}" />
-  <link rel="alternate" hreflang="ja" href="{{hrefJa}}" />
+    <link rel="alternate" hreflang="en" href="{{hrefEn}}" />
+    <link rel="alternate" hreflang="ja" href="{{hrefJa}}" />
 
-  <link rel="icon" href="/assets/favicon.png" type="image/png" />
-  <link rel="stylesheet" href="/shared/styles.css" />
-  <script src="/shared/config.js"></script>
-</head>
-<body>
-  <header class="topbar">
-    <a class="brand" href="{{base}}/" aria-label="Home">
-      <img src="/assets/favicon.png" alt="Home" width="32" height="32" />
-    </a>
-    {{nav}}
-  </header>
+    <link rel="icon" href="/assets/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="/shared/styles.css" />
+    <script src="/shared/config.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="{{base}}/" aria-label="Home">
+        <img src="/assets/favicon.png" alt="Home" width="32" height="32" />
+      </a>
+      {{nav}}
+    </header>
 
-  <main class="wrap">
-    <section class="card" data-stamp="{{t:blogHub.title}}">
-      <h1>{{t:blogHub.title}}</h1>
-      <p class="muted">{{t:blogHub.lead}}</p>
+    <main class="wrap">
+      <section class="card" data-stamp="{{t:blogHub.title}}">
+        <h1>{{t:blogHub.title}}</h1>
+        <p class="muted">{{t:blogHub.lead}}</p>
 
-      <h2 class="section-title">{{t:blogHub.section.posts}}</h2>
-      <ul id="post-list" class="list"></ul>
+        <h2 class="section-title">{{t:blogHub.section.posts}}</h2>
+        <ul id="post-list" class="list"></ul>
 
-      <h2 class="section-title">{{t:blogHub.section.writing}}</h2>
-      <ul id="writing-list" class="list"></ul>
+        <h2 class="section-title">{{t:blogHub.section.writing}}</h2>
+        <ul id="writing-list" class="list"></ul>
 
-      <h2 class="section-title">{{t:blogHub.section.featured}}</h2>
-      <ul id="featured-list" class="list"></ul>
+        <h2 class="section-title">{{t:blogHub.section.featured}}</h2>
+        <ul id="featured-list" class="list"></ul>
 
-      <h2 class="section-title">{{t:blogHub.section.talks}}</h2>
-      <ul id="talks-list" class="list"></ul>
-    </section>
-  </main>
+        <h2 class="section-title">{{t:blogHub.section.talks}}</h2>
+        <ul id="talks-list" class="list"></ul>
+      </section>
+    </main>
 
-  <script type="module">
-    import { mountLangToggle, mountThemeToggle, mountTopbar, fetchList, fetchWriting, el, chips } from "/shared/app.js";
-    mountLangToggle();
-    mountThemeToggle();
-    mountTopbar();
+    <script type="module">
+      import {
+        mountLangToggle,
+        mountThemeToggle,
+        mountTopbar,
+        fetchList,
+        fetchWriting,
+        el,
+        chips,
+      } from "/shared/app.js";
+      mountLangToggle();
+      mountThemeToggle();
+      mountTopbar();
 
-    const locale = "{{lang}}" === "ja" ? "ja-JP" : "en-US";
-    const formatDate = (value) => {
-      if (!value) return "";
-      const date = new Date(value);
-      if (Number.isNaN(date.getTime())) return value;
-      return new Intl.DateTimeFormat(locale, { year: "numeric", month: "short", day: "2-digit" }).format(date);
-    };
+      const locale = "{{lang}}" === "ja" ? "ja-JP" : "en-US";
+      const formatDate = (value) => {
+        if (!value) return "";
+        const date = new Date(value);
+        if (Number.isNaN(date.getTime())) return value;
+        return new Intl.DateTimeFormat(locale, {
+          year: "numeric",
+          month: "short",
+          day: "2-digit",
+        }).format(date);
+      };
 
-    const buildMeta = (item, fields) => {
-      const parts = fields.map((key) => item[key]).filter(Boolean);
-      const date = formatDate(item.published_at);
-      if (date) parts.push(date);
-      return parts.join(" · ");
-    };
+      const buildMeta = (item, fields) => {
+        const parts = fields.map((key) => item[key]).filter(Boolean);
+        const date = formatDate(item.published_at);
+        if (date) parts.push(date);
+        return parts.join(" · ");
+      };
 
-    const withBadge = (titleNode, item) => {
-      if (item.content_lang === "ja") {
-        return el("span", {}, [
-          titleNode,
-          el("span", { class: "badge" }, ["JA"])
-        ]);
-      }
-      return titleNode;
-    };
+      const withBadge = (titleNode, item) => {
+        if (item.content_lang === "ja") {
+          return el("span", {}, [titleNode, el("span", { class: "badge" }, ["JA"])]);
+        }
+        return titleNode;
+      };
 
-    const renderExternal = (listEl, items, metaFields) => {
-      listEl.replaceChildren(...items.map((item) => {
-        const meta = buildMeta(item, metaFields);
-        return el("li", { class: "item" }, [
-          el("h3", {}, [
-            withBadge(
-              el("a", { href: item.url, target: "_blank", rel: "noopener noreferrer" }, [item.title]),
-              item
-            )
-          ]),
-          meta ? el("p", { class: "meta" }, [meta]) : document.createTextNode(""),
-          item.summary ? el("p", { class: "muted" }, [item.summary]) : document.createTextNode(""),
-          item.tags && item.tags.length ? chips(item.tags) : document.createTextNode("")
-        ]);
-      }));
-    };
+      const renderExternal = (listEl, items, metaFields) => {
+        listEl.replaceChildren(
+          ...items.map((item) => {
+            const meta = buildMeta(item, metaFields);
+            return el("li", { class: "item" }, [
+              el("h3", {}, [
+                withBadge(
+                  el("a", { href: item.url, target: "_blank", rel: "noopener noreferrer" }, [
+                    item.title,
+                  ]),
+                  item
+                ),
+              ]),
+              meta ? el("p", { class: "meta" }, [meta]) : document.createTextNode(""),
+              item.summary
+                ? el("p", { class: "muted" }, [item.summary])
+                : document.createTextNode(""),
+              item.tags && item.tags.length ? chips(item.tags) : document.createTextNode(""),
+            ]);
+          })
+        );
+      };
 
-    const renderPosts = (listEl, posts) => {
-      listEl.replaceChildren(...posts.map((post) =>
-        el("li", { class: "item" }, [
-          el("h3", {}, [post.title]),
-          el("p", { class: "meta" }, [formatDate(post.published_at)]),
-          post.summary ? el("p", { class: "muted" }, [post.summary]) : document.createTextNode(""),
-          chips(post.tags || []),
-          el("div", { class: "links" }, [
-            el("a", { href: `{{base}}/blog/post/?slug=${encodeURIComponent(post.slug)}` }, ["{{t:common.read}}"])
-          ])
-        ])
-      ));
-    };
+      const renderPosts = (listEl, posts) => {
+        listEl.replaceChildren(
+          ...posts.map((post) =>
+            el("li", { class: "item" }, [
+              el("h3", {}, [post.title]),
+              el("p", { class: "meta" }, [formatDate(post.published_at)]),
+              post.summary
+                ? el("p", { class: "muted" }, [post.summary])
+                : document.createTextNode(""),
+              chips(post.tags || []),
+              el("div", { class: "links" }, [
+                el("a", { href: `{{base}}/blog/post/?slug=${encodeURIComponent(post.slug)}` }, [
+                  "{{t:common.read}}",
+                ]),
+              ]),
+            ])
+          )
+        );
+      };
 
-    const [posts, writing, featured, talks] = await Promise.all([
-      fetchList("blog"),
-      fetchWriting("writing"),
-      fetchWriting("featured"),
-      fetchWriting("talk")
-    ]);
+      const [posts, writing, featured, talks] = await Promise.all([
+        fetchList("blog"),
+        fetchWriting("writing"),
+        fetchWriting("featured"),
+        fetchWriting("talk"),
+      ]);
 
-    renderPosts(document.getElementById("post-list"), posts);
-    renderExternal(document.getElementById("writing-list"), writing, ["outlet"]);
-    renderExternal(document.getElementById("featured-list"), featured, ["outlet", "type"]);
-    renderExternal(document.getElementById("talks-list"), talks, ["outlet", "type", "role"]);
-  </script>
-</body>
+      renderPosts(document.getElementById("post-list"), posts);
+      renderExternal(document.getElementById("writing-list"), writing, ["outlet"]);
+      renderExternal(document.getElementById("featured-list"), featured, ["outlet", "type"]);
+      renderExternal(document.getElementById("talks-list"), talks, ["outlet", "type", "role"]);
+    </script>
+  </body>
 </html>

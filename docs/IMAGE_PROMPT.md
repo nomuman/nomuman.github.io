@@ -91,14 +91,13 @@ perfect for manual SVG tracing.
 
 ## まとめ（これだけ覚えておけばOK）
 
-* **キーワード核**
+- **キーワード核**
+  - `minimalist`
+  - `neo-brutalist`
+  - `thick black outline`
+  - `flat vector`
+  - `limited color palette`
+  - `Japanese graphic design`
 
-  * `minimalist`
-  * `neo-brutalist`
-  * `thick black outline`
-  * `flat vector`
-  * `limited color palette`
-  * `Japanese graphic design`
-* **必ずNG指定を入れる**
-* **favicon用途なら「16x16 readability」を明示**
-
+- **必ずNG指定を入れる**
+- **favicon用途なら「16x16 readability」を明示**

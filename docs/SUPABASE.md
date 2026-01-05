@@ -6,8 +6,8 @@
 2. **SQL Editor** を開く
 3. 下の **DDL** をそのまま実行（テーブル作成）
 4. 下の **RLS + Policies** を実行（公開読み取り）
+   - RLSをONにすると、anonではアクセス不可になり、ポリシーが必要。 ([Supabase][2])
 
-   * RLSをONにすると、anonではアクセス不可になり、ポリシーが必要。 ([Supabase][2])
 5. 下の **Seed（サンプルデータ）** を実行（動作確認用）
 6. Supabase から `Project URL` と `anon key` を取得（キーの種類は公式参照） ([Supabase][5])
 7. GitHub Pages 側の `shared/config.js` に設定（あなたのテンプレ通り）
