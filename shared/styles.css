@@ -35,7 +35,8 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial;
-  line-height: 1.5;
+  line-height: 1.55;
+  font-size: 16px;
 }
 
 a {
@@ -148,11 +149,15 @@ a:focus {
 .wrap {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 32px 18px 56px;
+  padding: 28px 18px 64px;
+}
+
+.wrap > * + * {
+  margin-top: 28px;
 }
 
 .hero {
-  padding: 22px 0 26px;
+  padding: 14px 0 8px;
 }
 
 .kicker {
@@ -165,18 +170,18 @@ a:focus {
 
 h1 {
   margin: 0 0 12px;
-  font-size: clamp(36px, 5vw, 64px);
+  font-size: clamp(30px, 4.2vw, 54px);
   line-height: 1.05;
 }
 
 h2 {
   margin: 0 0 12px;
-  font-size: clamp(24px, 3vw, 30px);
+  font-size: clamp(22px, 2.6vw, 28px);
 }
 
 h3 {
   margin: 0 0 6px;
-  font-size: 1.05rem;
+  font-size: 1rem;
 }
 
 h1,
@@ -193,7 +198,7 @@ h3,
 .lead {
   max-width: 62ch;
   color: var(--muted);
-  font-size: 1.1rem;
+  font-size: 1.02rem;
 }
 
 .motto {
@@ -204,8 +209,8 @@ h3,
 }
 
 .card {
-  margin: 22px 0;
-  padding: 20px;
+  margin: 0;
+  padding: 22px;
   border: 2px solid var(--border);
   background: var(--card);
   box-shadow: var(--shadow);
@@ -213,19 +218,19 @@ h3,
 }
 
 .card[data-stamp] {
-  padding-top: 26px;
+  padding-top: 30px;
 }
 
 .card[data-stamp]::before {
   content: attr(data-stamp);
   position: absolute;
-  top: -12px;
-  left: 14px;
+  top: -14px;
+  left: 16px;
   padding: 4px 8px;
   border: 2px solid var(--border);
   background: var(--accent);
   color: #120b0b;
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   font-weight: 900;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -242,9 +247,9 @@ h3,
 
 .links {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .links a {
@@ -293,7 +298,7 @@ h3,
 .grid2 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  gap: 18px;
 }
 
 @media (max-width: 720px) {
@@ -309,7 +314,7 @@ h3,
 }
 
 .item {
-  padding: 12px 0;
+  padding: 14px 0;
   border-top: 1px solid rgba(246, 242, 240, 0.2);
 }
 
@@ -319,7 +324,7 @@ h3,
 
 .timeline .item {
   display: grid;
-  gap: 6px;
+  gap: 8px;
 }
 
 .timeline .role {
@@ -392,7 +397,7 @@ h3,
 }
 
 .footer {
-  margin-top: 22px;
+  margin-top: 0;
   color: var(--muted);
 }
 
@@ -422,11 +427,10 @@ h3,
   }
 
   .wrap {
-    padding: 36px 20px 60px;
+    padding: 26px 18px 56px;
   }
 
   .card {
-    margin: 24px 0;
     padding: 20px;
   }
 }
