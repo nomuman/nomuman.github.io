@@ -17,6 +17,73 @@ export function mountLangToggle() {
   a.textContent = detectLang() === "ja" ? "EN" : "JA";
 }
 
+const THEME_KEY = "theme";
+
+function getStoredTheme() {
+  try {
+    return localStorage.getItem(THEME_KEY);
+  } catch {
+    return null;
+  }
+}
+
+function setStoredTheme(value) {
+  try {
+    localStorage.setItem(THEME_KEY, value);
+  } catch {
+    return;
+  }
+}
+
+export function mountThemeToggle() {
+  const buttons = document.querySelectorAll("[data-theme-toggle]");
+  if (!buttons.length) return;
+
+  const root = document.documentElement;
+  const media =
+    typeof window.matchMedia === "function"
+      ? window.matchMedia("(prefers-color-scheme: light)")
+      : null;
+
+  const updateButtons = (current) => {
+    buttons.forEach((btn) => {
+      const theme = btn.getAttribute("data-theme-toggle");
+      const active = theme === current;
+      btn.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+  };
+
+  const applyTheme = (theme) => {
+    root.setAttribute("data-theme", theme);
+    updateButtons(theme);
+  };
+
+  const stored = getStoredTheme();
+  const initial =
+    stored || (media && media.matches ? "light" : "dark");
+  applyTheme(initial);
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const next = btn.getAttribute("data-theme-toggle");
+      if (!next) return;
+      applyTheme(next);
+      setStoredTheme(next);
+    });
+  });
+
+  if (!stored && media) {
+    const handler = (event) => {
+      applyTheme(event.matches ? "light" : "dark");
+    };
+    if (typeof media.addEventListener === "function") {
+      media.addEventListener("change", handler);
+    } else if (typeof media.addListener === "function") {
+      media.addListener(handler);
+    }
+  }
+}
+
 export function mountTopbar() {
   const topbar = document.querySelector(".topbar");
   if (!topbar) return;

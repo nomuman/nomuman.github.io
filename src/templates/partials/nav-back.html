@@ -1,4 +1,10 @@
 <nav class="nav nav--back" aria-label="Back">
   <a href="{{backHref}}">{{t:common.back}}</a>
-  <a class="lang-toggle" data-lang-toggle href="{{altHref}}">{{altLabel}}</a>
+  <div class="nav-tools">
+    <div class="theme-toggle" role="group" aria-label="Theme">
+      <button class="theme-btn" type="button" data-theme-toggle="light">{{t:nav.light}}</button>
+      <button class="theme-btn" type="button" data-theme-toggle="dark">{{t:nav.dark}}</button>
+    </div>
+    <a class="lang-toggle" data-lang-toggle href="{{altHref}}">{{altLabel}}</a>
+  </div>
 </nav>

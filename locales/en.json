@@ -5,6 +5,8 @@
   "nav.books": "Books",
   "nav.about": "About",
   "nav.cta": "Say hello",
+  "nav.light": "Light",
+  "nav.dark": "Dark",
   "common.read": "Read",
   "common.view": "View",
   "common.more": "See more",

@@ -43,8 +43,9 @@
   </main>
 
   <script type="module">
-    import { mountLangToggle, mountTopbar, fetchWriting, el, chips } from "/shared/app.js";
+    import { mountLangToggle, mountThemeToggle, mountTopbar, fetchWriting, el, chips } from "/shared/app.js";
     mountLangToggle();
+    mountThemeToggle();
     mountTopbar();
 
     const locale = "{{lang}}" === "ja" ? "ja-JP" : "en-US";

@@ -27,13 +27,20 @@
   <header class="topbar">
     <a class="brand" href="/ja/" aria-label="Home">N</a>
     <nav class="nav nav--main" aria-label="Primary">
-  <a href="/ja/work/">Work</a>
+  <!-- TODO: Work/Art/Books will be re-enabled later -->
+  <!-- <a href="/ja/work/">Work</a> -->
   <a href="/ja/blog/">Blog</a>
-  <a href="/ja/art/">Art</a>
-  <a href="/ja/books/">Books</a>
+  <!-- <a href="/ja/art/">Art</a> -->
+  <!-- <a href="/ja/books/">Books</a> -->
   <a href="/ja/about/">About</a>
   <a class="cta" href="mailto:senri.gotoda@gmail.com">連絡する</a>
-  <a class="lang-toggle" data-lang-toggle href="/talks/">EN</a>
+  <div class="nav-tools">
+    <div class="theme-toggle" role="group" aria-label="Theme">
+      <button class="theme-btn" type="button" data-theme-toggle="light">ライト</button>
+      <button class="theme-btn" type="button" data-theme-toggle="dark">ダーク</button>
+    </div>
+    <a class="lang-toggle" data-lang-toggle href="/talks/">EN</a>
+  </div>
 </nav>
 
   </header>
@@ -52,8 +59,9 @@
   </main>
 
   <script type="module">
-    import { mountLangToggle, mountTopbar, fetchWriting, el, chips } from "/shared/app.js";
+    import { mountLangToggle, mountThemeToggle, mountTopbar, fetchWriting, el, chips } from "/shared/app.js";
     mountLangToggle();
+    mountThemeToggle();
     mountTopbar();
 
     const locale = "ja" === "ja" ? "ja-JP" : "en-US";
