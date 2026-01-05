@@ -17,13 +17,13 @@ Personal Website UIデザイン指南書（Neo-Brutal Resume / “Marjo風の空
 > 宗教的モチーフは象徴の直接引用を避け、**抽象的な幾何学**で表現する。
 
 参考観察（要点）：
-- 上部ナビ（Home/About/Journey/Skills/Contact）＋Hero（挨拶→大見出し→説明→SNS→CTA） :contentReference[oaicite:1]{index=1}
-- Journeyはタイムライン形式（職歴カードが連なる） :contentReference[oaicite:2]{index=2}
-- Skillsはカテゴリごとに “単語チップを並べる” 表現 :contentReference[oaicite:3]{index=3}
-- Footer付近に Terminal への導線 :contentReference[oaicite:4]{index=4}
-- Awwwardsでも “neo brutalism style” と説明されている :contentReference[oaicite:5]{index=5}
+- 上部ナビ（Home/About/Journey/Skills/Contact）＋Hero（挨拶→大見出し→説明→SNS→CTA） 
+- Journeyはタイムライン形式（職歴カードが連なる） 
+- Skillsはカテゴリごとに “単語チップを並べる” 表現 
+- Footer付近に Terminal への導線 
+- Awwwardsでも “neo brutalism style” と説明されている 
 
-> Neo-brutalismの特徴：高コントラスト、ブロック/ボクシー、太枠、ハードな影、未加工感 :contentReference[oaicite:6]{index=6}
+> Neo-brutalismの特徴：高コントラスト、ブロック/ボクシー、太枠、ハードな影、未加工感 
 
 ---
 
@@ -65,10 +65,10 @@ Personal Website UIデザイン指南書（Neo-Brutal Resume / “Marjo風の空
 
 ### 2.4 セクション（情報設計）
 ENルートのHomeに、要点を“まとめ表示”して各詳細へ：
-- Hero（挨拶、名前、1段落、SNS、CTA） :contentReference[oaicite:7]{index=7}
+- Hero（挨拶、名前、1段落、SNS、CTA） 
 - About（短い自己紹介）
-- Journey（タイムライン：職歴 or 主要PJ） :contentReference[oaicite:8]{index=8}
-- Skills（カテゴリ別チップ） :contentReference[oaicite:9]{index=9}
+- Journey（タイムライン：職歴 or 主要PJ） 
+- Skills（カテゴリ別チップ） 
 - Featured（Work/Blog/Art/Booksを各3件）
 - Contact（Email/X/GitHub）
 
@@ -119,7 +119,7 @@ ENルートのHomeに、要点を“まとめ表示”して各詳細へ：
 - border: #1b1414
 - accent: #e5232a
 
-> 高コントラスト＋アクセント一点の原則は維持する :contentReference[oaicite:10]{index=10}
+> 高コントラスト＋アクセント一点の原則は維持する 
 
 ---
 
@@ -144,7 +144,7 @@ ENルートのHomeに、要点を“まとめ表示”して各詳細へ：
 - 左：`Brand`（1文字ロゴ、太枠＋影）
 - 右：リンク群（hoverでunderline）
 - CTA（Contact）は accent 背景 + 太枠 + 影
-参考サイトも上部ナビ + CTA を持つ :contentReference[oaicite:11]{index=11}
+参考サイトも上部ナビ + CTA を持つ 
 
 **Do**
 - ナビ項目は増やしすぎない（最大7）
@@ -152,7 +152,7 @@ ENルートのHomeに、要点を“まとめ表示”して各詳細へ：
 - ドロップダウン多用（重い＆neo-brutalの“直球感”が死ぬ）
 
 ### 6.2 Hero
-- `Kicker`（Hi there! 的な短文） :contentReference[oaicite:12]{index=12}
+- `Kicker`（Hi there! 的な短文） 
 - H1（I’m Natsume.）
 - 1段落（最大3〜4行）
 - SNSリンク（Email / X / GitHub）
@@ -166,7 +166,7 @@ ENルートのHomeに、要点を“まとめ表示”して各詳細へ：
 - padding: 18px（モバイル） / 20〜24px（デスクトップ）
 
 ### 6.4 Timeline（Journey）
-参考サイトは職歴タイムラインの連なり :contentReference[oaicite:13]{index=13}
+参考サイトは職歴タイムラインの連なり 
 構造：
 - Title（Role @ Company）
 - Date range（例：Jul 2020 - Nov 2025）
@@ -177,7 +177,7 @@ ENルートのHomeに、要点を“まとめ表示”して各詳細へ：
 - 余白で“積層”感を出す
 
 ### 6.5 Chips（Skills/Tags）
-参考サイトはカテゴリごとに大量の単語が並ぶ :contentReference[oaicite:14]{index=14}
+参考サイトはカテゴリごとに大量の単語が並ぶ 
 仕様：
 - inline-flex / wrap
 - chipは “枠＋太字” のみ（装飾しすぎない）
@@ -211,7 +211,7 @@ ENルートのHomeに、要点を“まとめ表示”して各詳細へ：
 
 ### 6.10 Footer
 - 小さく、muted
-- Terminal導線は将来（参考サイトはFooterからTerminalへ） :contentReference[oaicite:15]{index=15}
+- Terminal導線は将来（参考サイトはFooterからTerminalへ） 
 
 ### 6.11 InterestChips（嗜好タグ）
 - 使い所：Hero直下 or About冒頭
@@ -243,7 +243,7 @@ ENルートのHomeに、要点を“まとめ表示”して各詳細へ：
 - フォーカスリングは消さない（accentで見えるように）
 - 画像alt必須（Artは特に）
 - `<html lang="en">` / `<html lang="ja">` 必須
-- 言語対応は `hreflang` で相互参照（localized variations） :contentReference[oaicite:16]{index=16}
+- 言語対応は `hreflang` で相互参照（localized variations） 
 
 ---
 
@@ -252,7 +252,7 @@ ENルートのHomeに、要点を“まとめ表示”して各詳細へ：
 - JSは必要ページだけ `type="module"` で実行
 - 画像は最小・webp推奨・lazy
 - CSSは1ファイル、影/枠のデザインで“重さなしで派手”を作る
-Neo-brutalismは装飾が少なくても強い見た目を作りやすい :contentReference[oaicite:17]{index=17}
+Neo-brutalismは装飾が少なくても強い見た目を作りやすい 
 
 ---
 
@@ -272,7 +272,7 @@ Neo-brutalismは装飾が少なくても強い見た目を作りやすい :conte
 - [ ] EN/JAで同じ構造が保たれている
 
 ### SEO/i18n
-- [ ] 各対応ページに `hreflang` を相互に設定 :contentReference[oaicite:18]{index=18}
+- [ ] 各対応ページに `hreflang` を相互に設定 
 - [ ] `<html lang>` が正しい
 
 ---

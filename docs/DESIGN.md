@@ -19,13 +19,13 @@
   - Art（自作イラストギャラリー）
   - Books（読書ログ）
   - About/Resume（経歴・スキル・連絡先）
-- GitHub Pagesで静的配信（HTML/CSS/JSをそのまま配信できる）:contentReference[oaicite:0]{index=0}
+- GitHub Pagesで静的配信（HTML/CSS/JSをそのまま配信できる）
 - Supabaseにデータを格納し、フロントはRESTで読み出す（超軽量）  
-  Supabase RESTは PostgREST を使い `/rest/v1/` で自動生成される:contentReference[oaicite:1]{index=1}
+  Supabase RESTは PostgREST を使い `/rest/v1/` で自動生成される
 - 公開サイトなので読み取り中心。書き込みは最初はSupabase Dashboardで手作業。
 
 ### 非ゴール（今回はやらない）
-- Terminal Resume（将来拡張。参考サイトはテーマ/言語/分割UIを持つ）:contentReference[oaicite:2]{index=2}
+- Terminal Resume（将来拡張。参考サイトはテーマ/言語/分割UIを持つ）
 - ルーティングやSPA化（静的ページ + 必要ページだけfetch）
 - 認証付き管理画面（必要になったらEdge Functions等で追加）
 
@@ -33,10 +33,10 @@
 
 ## 2. UIデザイン指針（参考：marjoballabani.me）
 参考サイトのUI構造（要点）：
-- 1ページ縦スクロール + 上部ナビ（Home/About/Journey/Skills/Contact）:contentReference[oaicite:3]{index=3}
-- Hero：挨拶 → 大きいH1 → 1段落説明 → SNSリンク → CTAボタン（Get in Touch）:contentReference[oaicite:4]{index=4}
-- セクション構成：ABOUT / My Journey（タイムライン） / SKILLS（カテゴリ+チップ）/ EDUCATION / LANGUAGES / GET IN TOUCH:contentReference[oaicite:5]{index=5}
-- “Neo-Brutalism”っぽい要素：太い枠線・強いコントラスト・ベタ塗り・影・チップの羅列（タイポと余白で勝つ）:contentReference[oaicite:6]{index=6}
+- 1ページ縦スクロール + 上部ナビ（Home/About/Journey/Skills/Contact）
+- Hero：挨拶 → 大きいH1 → 1段落説明 → SNSリンク → CTAボタン（Get in Touch）
+- セクション構成：ABOUT / My Journey（タイムライン） / SKILLS（カテゴリ+チップ）/ EDUCATION / LANGUAGES / GET IN TOUCH
+- “Neo-Brutalism”っぽい要素：太い枠線・強いコントラスト・ベタ塗り・影・チップの羅列（タイポと余白で勝つ）
 
 ### このプロジェクトのUIルール（実装者向け）
 **全体**
@@ -87,11 +87,11 @@ JA：
 ---
 
 ## 4. i18n（EN/JA翻訳セット）方針
-- **言語ごとに別URL**を採用（Google推奨）:contentReference[oaicite:7]{index=7}
+- **言語ごとに別URL**を採用（Google推奨）
 - すべての対応ページで `hreflang` を相互参照  
-  - `hreflang` は「ローカライズ版の対応関係」をGoogleに伝える:contentReference[oaicite:8]{index=8}
-  - 各言語ページは **自分自身 + 相手言語** をheadに列挙（双方向じゃないと無視されうる）:contentReference[oaicite:9]{index=9}
-- Googleは `hreflang` や `lang` 属性だけで言語判定はしない（ただし設定は重要）:contentReference[oaicite:10]{index=10}
+  - `hreflang` は「ローカライズ版の対応関係」をGoogleに伝える
+  - 各言語ページは **自分自身 + 相手言語** をheadに列挙（双方向じゃないと無視されうる）
+- Googleは `hreflang` や `lang` 属性だけで言語判定はしない（ただし設定は重要）
 - `<html lang="en">` / `<html lang="ja">` を必ず設定
 
 **テンプレ（EN記事ページのhead）**
