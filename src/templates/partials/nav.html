@@ -6,10 +6,29 @@
   <!-- <a href="{{base}}/books/">{{t:nav.books}}</a> -->
   <a href="{{base}}/about/">{{t:nav.about}}</a>
   <div class="nav-tools">
-    <div class="theme-toggle" role="group" aria-label="Theme">
-      <button class="theme-btn" type="button" data-theme-toggle="light">{{t:nav.light}}</button>
-      <button class="theme-btn" type="button" data-theme-toggle="dark">{{t:nav.dark}}</button>
-    </div>
+    <button class="theme-toggle" type="button" data-theme-toggle="toggle" title="{{t:nav.themeToggle}}">
+      <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path
+            d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          ></path>
+        </svg>
+      </span>
+      <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path
+            d="M21 14.5A8.5 8.5 0 0 1 9.5 3a7 7 0 1 0 11.5 11.5Z"
+            fill="currentColor"
+          ></path>
+        </svg>
+      </span>
+      <span class="sr-only">{{t:nav.themeToggle}}</span>
+    </button>
     <a class="lang-toggle" data-lang-toggle href="{{altHref}}">{{altLabel}}</a>
   </div>
 </nav>

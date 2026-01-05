@@ -20,6 +20,18 @@
     <link rel="alternate" hreflang="ja" href="{{hrefJa}}" />
 
     <link rel="icon" href="/assets/favicon.png" type="image/png" />
+    <script data-theme-init>
+      (() => {
+        try {
+          const key = "theme";
+          const stored = localStorage.getItem(key);
+          const prefersLight =
+            window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
+          const theme = stored || (prefersLight ? "light" : "dark");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch {}
+      })();
+    </script>
     <link rel="stylesheet" href="/shared/styles.css" />
   </head>
   <body>

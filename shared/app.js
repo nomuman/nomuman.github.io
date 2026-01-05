@@ -36,7 +36,7 @@ function setStoredTheme(value) {
 }
 
 export function mountThemeToggle() {
-  const buttons = document.querySelectorAll("[data-theme-toggle]");
+  const buttons = Array.from(document.querySelectorAll("[data-theme-toggle]"));
   if (!buttons.length) return;
 
   const root = document.documentElement;
@@ -48,6 +48,10 @@ export function mountThemeToggle() {
   const updateButtons = (current) => {
     buttons.forEach((btn) => {
       const theme = btn.getAttribute("data-theme-toggle");
+      if (theme === "toggle") {
+        btn.setAttribute("aria-pressed", current === "dark" ? "true" : "false");
+        return;
+      }
       const active = theme === current;
       btn.setAttribute("aria-pressed", active ? "true" : "false");
     });
@@ -62,10 +66,13 @@ export function mountThemeToggle() {
   const initial = stored || (media && media.matches ? "light" : "dark");
   applyTheme(initial);
 
+  const getCurrentTheme = () => root.getAttribute("data-theme") || initial;
+
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      const next = btn.getAttribute("data-theme-toggle");
-      if (!next) return;
+      const theme = btn.getAttribute("data-theme-toggle");
+      if (!theme) return;
+      const next = theme === "toggle" ? (getCurrentTheme() === "light" ? "dark" : "light") : theme;
       applyTheme(next);
       setStoredTheme(next);
     });

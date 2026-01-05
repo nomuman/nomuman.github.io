@@ -20,6 +20,18 @@
     <link rel="alternate" hreflang="ja" href="https://nomuman.github.io/ja/about/" />
 
     <link rel="icon" href="/assets/favicon.png" type="image/png" />
+    <script data-theme-init>
+      (() => {
+        try {
+          const key = "theme";
+          const stored = localStorage.getItem(key);
+          const prefersLight =
+            window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
+          const theme = stored || (prefersLight ? "light" : "dark");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch {}
+      })();
+    </script>
     <link rel="stylesheet" href="/shared/styles.css" />
   </head>
   <body>
@@ -35,10 +47,29 @@
   <!-- <a href="/ja/books/">Books</a> -->
   <a href="/ja/about/">About</a>
   <div class="nav-tools">
-    <div class="theme-toggle" role="group" aria-label="Theme">
-      <button class="theme-btn" type="button" data-theme-toggle="light">ライト</button>
-      <button class="theme-btn" type="button" data-theme-toggle="dark">ダーク</button>
-    </div>
+    <button class="theme-toggle" type="button" data-theme-toggle="toggle" title="テーマを切り替える">
+      <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path
+            d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          ></path>
+        </svg>
+      </span>
+      <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path
+            d="M21 14.5A8.5 8.5 0 0 1 9.5 3a7 7 0 1 0 11.5 11.5Z"
+            fill="currentColor"
+          ></path>
+        </svg>
+      </span>
+      <span class="sr-only">テーマを切り替える</span>
+    </button>
     <a class="lang-toggle" data-lang-toggle href="/about/">EN</a>
   </div>
 </nav>
